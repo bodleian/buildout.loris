@@ -1,0 +1,14 @@
+# ignore buildout files and folders
+.installed.cfg
+.mr.developer.cfg
+buildout.cfg
+bin/
+develop-eggs/
+include/
+lib/
+parts/
+src/
+var/
+
+# ignore temp files
+*~
