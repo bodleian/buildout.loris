@@ -1,3 +1,10 @@
+python-dev
+python-setuptools
+build-essential
+gcc
+wget
+openssl
+libssl-dev
 libjpeg-turbo8 
 libjpeg-turbo8-dev 
 libfreetype6
@@ -7,3 +14,4 @@ liblcms2-2
 liblcms2-dev 
 liblcms-utils 
 libtiff5-dev
+
