@@ -97,7 +97,7 @@ extends-cache = /home/bodl-loris-svc/.buildout/extends" >> ~/.buildout/default.c
 Create a virtualenv and run the buildout
 ----------------------------------------
 ```bash
-cd ~/sites/mdb1
+cd ~/sites/bodl-loris-svc
 ~/python/2.7.6/bin/virtualenv .
 source bin/activate
 pip install zc.buildout
