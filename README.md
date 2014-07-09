@@ -110,11 +110,13 @@ Setup library shortlinks
 ------------------------
 
 ```bash
-- sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/
-- sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
-- sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
-- sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
-- sudo ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/
+sudo ln -s /usr/include/freetype2 freetype
+sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/
+sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
+sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
+sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
+
+sudo ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/
 ```
 
 Install PIL source

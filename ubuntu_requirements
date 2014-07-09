@@ -10,8 +10,10 @@ libjpeg-turbo8-dev
 libfreetype6
 libfreetype6-dev 
 zlib1g-dev 
+liblcms 
+liblcms-dev 
+liblcms-utils
 liblcms2-2 
 liblcms2-dev 
-liblcms-utils 
 libtiff5-dev
 
