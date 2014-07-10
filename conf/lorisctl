@@ -1,30 +1,17 @@
 #!/bin/sh
 
 start () {
-    echo -n "Starting PHP-FPM $(date)..."
+    echo -n "Starting Apache $(date)..."
 
-    # start php-fpm service
-    su -c "sudo service ${module-name:fpm} start" -${users:sudo}
+    # start apache
+    su -c "${buildout:directory}/parts/apache/bin/apachectl start" -${users:sudo}
     RETVAL=$?
 
     if [ $RETVAL = 0 ]
     then
         echo "done."
     else
-        echo "PHP-FPM start failed (it may already be running). See error code for more information."
-    fi
-
-    echo -n "Starting nginx..."
-
-    # run reindexing
-    ${buildout:directory}/parts/nginx/sbin/nginx
-    RETVAL2=$?
-
-    if [ $RETVAL2 = 0 ]
-    then
-        echo "done."
-    else
-        echo "Nginx start failed. See error code for more information."
+        echo "Apache start failed (it may already be running). See error code for more information."
     fi
 
     return $RETVAL
@@ -32,31 +19,16 @@ start () {
 
 stop () {
     # stop daemon
-    echo -n "Stopping PHP-FPM $(date)..."
+    echo -n "Stopping Apache $(date)..."
 
-    # stop php-fpm
-    su -c "sudo service ${module-name:fpm} stop" -${users:sudo}
-    RETVAL=$?
+    # stop apache
+    su -c "${buildout:directory}/parts/apache/bin/apachectl stop" -${users:sudo}
 
     if [ $RETVAL = 0 ]
     then
         echo "done."
     else
-        echo "PHP-FPM stop failed (it may not be running). See error code for more information."
-    fi
-
-    echo -n "Stopping nginx..."
-
-    # stop nginx
-	${buildout:directory}/parts/nginx/sbin/nginx -s stop
-
-    RETVAL2=$?
-
-    if [ $RETVAL2 = 0 ]
-    then
-        echo "done."
-    else
-        echo "Nginx stop failed. See error code for more information."
+        echo "Apache stop failed (it may not be running). See error code for more information."
     fi
 
     return $RETVAL
@@ -65,15 +37,10 @@ stop () {
 
 restart () {
 
-    echo "Restarting PHP-FPM $(date)..."
-
-	# restart solr daemon
-    su -c "sudo service ${module-name:fpm} restart" -${users:sudo}
-
-    echo "Restarting nginx..."
-
-    # stop nginx
-    ${buildout:directory}/parts/nginx/sbin/nginx -s stop
+    echo "Restarting Apache $(date)..."
+ 
+	# restart apache
+    su -c "${buildout:directory}/parts/apache/bin/apachectl restart" -${users:sudo}
 
     RETVAL2=$?
 
@@ -81,20 +48,7 @@ restart () {
     then
         echo "done."
     else
-        echo "Nginx stop failed. See error code for more information."
-    fi
-
-    echo -n "Starting nginx..."
-
-    # run nginx
-    ${buildout:directory}/parts/nginx/sbin/nginx
-    RETVAL2=$?
-
-    if [ $RETVAL2 = 0 ]
-    then
-        echo "done."
-    else
-        echo "Nginx start failed. See error code for more information."
+        echo "Apache restart failed. See error code for more information."
     fi
 
     return $RETVAL
