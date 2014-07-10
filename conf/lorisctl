@@ -23,7 +23,8 @@ stop () {
 
     # stop apache
     /bin/su - ${users:sudo} -c "${buildout:directory}/parts/apache/bin/lorisctl stop"
-
+    RETVAL=$?
+    
     if [ $RETVAL = 0 ]
     then
         echo "done."
