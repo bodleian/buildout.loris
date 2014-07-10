@@ -106,6 +106,30 @@ buildout init
 buildout -c development.cfg
 ```
 
+Installation complete message
+-----------------------------
+
+You should see the following information on your screen. You may want to save this information to a file.
+
+```bash
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+Installation was successful. Here's where things are:
+
+ * Loris configuration: /home/loris/sites/loris/src/loris/etc/loris
+ * Cache cleaner cron: /home/loris/sites/loris/src/loris/bin/loris-cache_clean.sh
+ * kdu_expand: /home/loris/sites/loris/src/loris/bin/kdu_expand
+ * Kakadu libraries: /home/loris/sites/loris/src/loris/lib/libkdu_v72R.so
+ * Logs: /home/loris/sites/loris/var/log/loris
+ * Image cache (opaque): /home/loris/sites/loris/var/cache/loris/img
+ * Image cache (symlinks that look like IIIF URIs): /home/loris/sites/loris/var/cache/loris/links
+ * Info cache: /home/loris/sites/loris/var/cache/loris/info
+ * www/WSGI application directory: /home/loris/sites/loris/src/loris/www
+ * Temporary directory: /home/loris/sites/loris/tmp
+
+```
+
+Ignore the rest.
+
 Setup library shortlinks
 ------------------------
 

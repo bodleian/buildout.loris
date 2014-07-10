@@ -1,0 +1,121 @@
+#!/bin/sh
+
+start () {
+    echo -n "Starting PHP-FPM $(date)..."
+
+    # start php-fpm service
+    su -c "sudo service ${module-name:fpm} start" -${users:sudo}
+    RETVAL=$?
+
+    if [ $RETVAL = 0 ]
+    then
+        echo "done."
+    else
+        echo "PHP-FPM start failed (it may already be running). See error code for more information."
+    fi
+
+    echo -n "Starting nginx..."
+
+    # run reindexing
+    ${buildout:directory}/parts/nginx/sbin/nginx
+    RETVAL2=$?
+
+    if [ $RETVAL2 = 0 ]
+    then
+        echo "done."
+    else
+        echo "Nginx start failed. See error code for more information."
+    fi
+
+    return $RETVAL
+}
+
+stop () {
+    # stop daemon
+    echo -n "Stopping PHP-FPM $(date)..."
+
+    # stop php-fpm
+    su -c "sudo service ${module-name:fpm} stop" -${users:sudo}
+    RETVAL=$?
+
+    if [ $RETVAL = 0 ]
+    then
+        echo "done."
+    else
+        echo "PHP-FPM stop failed (it may not be running). See error code for more information."
+    fi
+
+    echo -n "Stopping nginx..."
+
+    # stop nginx
+	${buildout:directory}/parts/nginx/sbin/nginx -s stop
+
+    RETVAL2=$?
+
+    if [ $RETVAL2 = 0 ]
+    then
+        echo "done."
+    else
+        echo "Nginx stop failed. See error code for more information."
+    fi
+
+    return $RETVAL
+}
+
+
+restart () {
+
+    echo "Restarting PHP-FPM $(date)..."
+
+	# restart solr daemon
+    su -c "sudo service ${module-name:fpm} restart" -${users:sudo}
+
+    echo "Restarting nginx..."
+
+    # stop nginx
+    ${buildout:directory}/parts/nginx/sbin/nginx -s stop
+
+    RETVAL2=$?
+
+    if [ $RETVAL2 = 0 ]
+    then
+        echo "done."
+    else
+        echo "Nginx stop failed. See error code for more information."
+    fi
+
+    echo -n "Starting nginx..."
+
+    # run nginx
+    ${buildout:directory}/parts/nginx/sbin/nginx
+    RETVAL2=$?
+
+    if [ $RETVAL2 = 0 ]
+    then
+        echo "done."
+    else
+        echo "Nginx start failed. See error code for more information."
+    fi
+
+    return $RETVAL
+
+
+}
+
+case "$1" in    
+    start)
+        start
+    ;;
+    stop)
+        stop
+    ;;
+    restart)
+        restart
+    ;;
+    *)
+        echo $"Usage: mdb1ctl {start|status|stop|restart}"
+        exit 3
+    ;;
+esac
+
+exit $RETVAL
