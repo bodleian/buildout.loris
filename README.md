@@ -119,23 +119,6 @@ sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/
 ```
 
-Install PIL source
-------------------
-
-```bash
-su - <sudo user>
-sudo python /home/bodl-loris-svc/sites/bodl-loris-svc/parts/PIL/setup.py install
-su - bodl-loris-svc
-```
-
-Run the test
-------------
-
-```bash
-cd /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris
-./test.py
-```
-
 Setup the reboot script in the sudo crontab
 -------------------------------------------
 
