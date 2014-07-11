@@ -143,6 +143,12 @@ sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/
 ```
 
+Temporarily you will need to copy the kdu library into /usr/lib/. Once this is compiled from source (source is currently unavailable on Q: 11.7.14).
+
+```bash
+sudo cp libkdu_v72R.so /usr/lib/
+```
+
 Setup the reboot script in the sudo crontab
 -------------------------------------------
 
