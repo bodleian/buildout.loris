@@ -14,9 +14,9 @@ from loris.transforms import JP2_Transformer
 		
 VERSION = loris.__version__
 
-BIN_DP = '${directory:buildout}/src/loris/bin'
-ETC_DP = '${directory:buildout}/src/loris/etc/loris'
-LIB_DP = '${directory:buildout}/src/loris/lib'
+BIN_DP = '${buildout:directory}/src/loris/bin'
+ETC_DP = '${buildout:directory}/src/loris/etc/loris'
+LIB_DP = '${buildout:directory}/src/loris/lib'
 
 KDU_EXPAND_TARGET = os.path.join(BIN_DP, 'kdu_expand')
 KDU_LIBS_TARGET = os.path.join(LIB_DP, JP2_Transformer.libkdu_name())
