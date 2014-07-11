@@ -4,7 +4,7 @@ start () {
     echo -n "Starting Apache $(date)..."
 
     # start apache
-    /bin/su - ${users:sudo} -c "${buildout:directory}/parts/apache/bin/lorisctl start" 
+    /bin/su - ${users:sudo} -c "${buildout:directory}/parts/apache/bin/apachectl start" 
     RETVAL=$?
 
     if [ $RETVAL = 0 ]
@@ -22,7 +22,7 @@ stop () {
     echo -n "Stopping Apache $(date)..."
 
     # stop apache
-    /bin/su - ${users:sudo} -c "${buildout:directory}/parts/apache/bin/lorisctl stop"
+    /bin/su - ${users:sudo} -c "${buildout:directory}/parts/apache/bin/apachectl stop"
     RETVAL=$?
     
     if [ $RETVAL = 0 ]
@@ -41,7 +41,7 @@ restart () {
     echo "Restarting Apache $(date)..."
  
 	# restart apache
-    /bin/su - ${users:sudo} -c "${buildout:directory}/parts/apache/bin/lorisctl restart"
+    /bin/su - ${users:sudo} -c "${buildout:directory}/parts/apache/bin/apachectl restart"
 
     RETVAL2=$?
 
