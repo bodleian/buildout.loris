@@ -156,6 +156,15 @@ Temporarily you will need to copy the kdu library into /usr/lib/. Once this is c
 sudo cp /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/lib/Linux/x86_64/libkdu_v72R.so /usr/lib/
 ```
 
+Start Apache
+------------
+
+From within the virtual environment:
+
+``bash
+/home/bodl-loris-svc/sites/bodl-loris-svc/parts/apache/bin/apachectl start
+```
+
 Setup the reboot script in the sudo crontab
 -------------------------------------------
 
