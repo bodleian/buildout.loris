@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # setup.py
 
@@ -11,7 +10,7 @@ from sys import stderr, stdout, exit
 import loris
 import os
 from loris.transforms import JP2_Transformer 
-		
+
 VERSION = loris.__version__
 
 BIN_DP = '${buildout:directory}/src/loris/bin'
