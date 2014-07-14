@@ -106,6 +106,13 @@ buildout init
 buildout -c development.cfg
 ```
 
+Install Loris
+-------------
+
+```bash
+sudo python /home/loris/sites/loris/src/loris/setup.py install
+```
+
 Installation complete message
 -----------------------------
 
