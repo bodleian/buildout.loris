@@ -161,7 +161,7 @@ Start Apache
 
 From within the virtual environment:
 
-``bash
+```bash
 /home/bodl-loris-svc/sites/bodl-loris-svc/parts/apache/bin/apachectl start
 ```
 
