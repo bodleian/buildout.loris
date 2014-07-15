@@ -7,8 +7,10 @@ Create user "bodl-loris-svc"
 ```bash
 sudo useradd bodl-loris-svc
 sudo passwd bodl-loris-svc
+sudo mkdir -p /home/bodl-loris-svc/.ssh
+cd /home
+sudo chown -R bodl-loris-svc:bodl-loris-svc bodl-loris-svc/
 su - bodl-loris-svc
-mkdir -p /home/bodl-loris-svc/.ssh
 ssh-keygen -t rsa
 ```
 
