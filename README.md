@@ -114,6 +114,7 @@ Install Loris
 -------------
 
 ```bash
+su - <sudo user>
 sudo python /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/setup.py install
 ```
 
