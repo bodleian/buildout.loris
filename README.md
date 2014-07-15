@@ -45,6 +45,7 @@ git config --global user.name "name in quotes"
 Checkout the buildout
 ---------------------
 ```bash
+su - bodl-loris-svc
 mkdir -p ~/sites/bodl-loris-svc
 cd ~/sites/bodl-loris-svc
 git clone gitlab@source.bodleian.ox.ac.uk:loris/buildout.loris.git ./
