@@ -7,7 +7,7 @@ Create user "bodl-loris-svc"
 ```bash
 sudo useradd bodl-loris-svc
 sudo passwd bodl-loris-svc
-su - mdb1
+su - bodl-loris-svc
 mkdir -p /home/bodl-loris-svc/.ssh
 ssh-keygen -t rsa
 ```
