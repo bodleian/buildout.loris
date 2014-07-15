@@ -122,8 +122,7 @@ Install Loris
 -------------
 
 ```bash
-su - <sudo user>
-sudo python /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/setup.py install
+python /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/setup.py install
 ```
 
 Installation complete message
@@ -175,7 +174,7 @@ Start Apache
 From within the virtual environment:
 
 ```bash
-/home/bodl-loris-svc/sites/bodl-loris-svc/parts/apache/bin/apachectl start
+/home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
 ```
 
 Setup the reboot script in the sudo crontab
