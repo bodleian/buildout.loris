@@ -110,6 +110,14 @@ buildout init
 buildout -c development.cfg
 ```
 
+Install eggs (temporary)
+------------------------
+
+```bash
+pip install pillow=2.5.0
+pip install werkzeug=0.9.6
+```
+
 Install Loris
 -------------
 
@@ -127,16 +135,16 @@ You should see the following information on your screen. You may want to save th
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 Installation was successful. Here's where things are:
 
- * Loris configuration: /home/loris/sites/loris/src/loris/etc/loris
- * Cache cleaner cron: /home/loris/sites/loris/src/loris/bin/loris-cache_clean.sh
- * kdu_expand: /home/loris/sites/loris/src/loris/bin/kdu_expand
- * Kakadu libraries: /home/loris/sites/loris/src/loris/lib/libkdu_v72R.so
- * Logs: /home/loris/sites/loris/var/log/loris
- * Image cache (opaque): /home/loris/sites/loris/var/cache/loris/img
- * Image cache (symlinks that look like IIIF URIs): /home/loris/sites/loris/var/cache/loris/links
- * Info cache: /home/loris/sites/loris/var/cache/loris/info
- * www/WSGI application directory: /home/loris/sites/loris/src/loris/www
- * Temporary directory: /home/loris/sites/loris/tmp
+ * Loris configuration: /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/etc/loris
+ * Cache cleaner cron: /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/bin/loris-cache_clean.sh
+ * kdu_expand: /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/bin/kdu_expand
+ * Kakadu libraries: /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/lib/libkdu_v72R.so
+ * Logs: /home/bodl-loris-svc/sites/bodl-loris-svc/var/log/loris
+ * Image cache (opaque): /home/bodl-loris-svc/sites/bodl-loris-svc/var/cache/loris/img
+ * Image cache (symlinks that look like IIIF URIs): /home/bodl-loris-svc/sites/bodl-loris-svc/var/cache/loris/links
+ * Info cache: /home/bodl-loris-svc/sites/bodl-loris-svc/var/cache/loris/info
+ * www/WSGI application directory: /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/www
+ * Temporary directory: /home/bodl-loris-svc/sites/bodl-loris-svc/tmp
 
 ```
 
