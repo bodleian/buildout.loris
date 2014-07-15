@@ -122,7 +122,9 @@ Install Loris
 -------------
 
 ```bash
-python /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/setup.py install
+
+cd /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris
+python setup.py install
 ```
 
 Installation complete message
