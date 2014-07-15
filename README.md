@@ -23,6 +23,7 @@ cat ~/.ssh/id_rsa.pub
 Install and configure Git (Ubuntu)
 ----------------------------------
 ```bash
+su - <sudo user>
 sudo apt-get install git
 ```
 ```bash
