@@ -10,6 +10,7 @@ sudo passwd bodl-loris-svc
 sudo mkdir -p /home/bodl-loris-svc/.ssh
 cd /home
 sudo chown -R bodl-loris-svc:bodl-loris-svc bodl-loris-svc/
+sudo chsh -s /bin/bash bodl-loris-svc
 su - bodl-loris-svc
 ssh-keygen -t rsa
 ```
