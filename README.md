@@ -157,6 +157,7 @@ Setup library shortlinks
 ------------------------
 
 ```bash
+su - <sudo user>
 sudo ln -s /usr/include/freetype2 freetype
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/
@@ -178,6 +179,9 @@ Start Apache
 From within the virtual environment:
 
 ```bash
+su - bodl-loris-svc
+cd ~/sites/bodl-loris-svc
+. bin/activate
 /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
 ```
 
