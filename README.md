@@ -191,7 +191,7 @@ Setup the reboot script in the sudo crontab
 ```bash
 su - <sudo user>
 sudo crontab /home/bodl-loris-svc/sites/bodl-loris-svc/bin/cron.txt
-su - mdb1
+su - bodl-loris-svc
 ```
 
 
