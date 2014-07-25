@@ -185,6 +185,22 @@ cd ~/sites/bodl-loris-svc
 /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
 ```
 
+Test
+----
+
+Copy the test images into your image root:
+
+```bash 
+cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl-loris-svc/sites/bodl-loris-svc/var/images
+```
+
+Browse the following links to test:
+
+http://{your_server}/loris/01/02/0001.jp2/full/full/0/default.jpg
+http://{your_server}/loris/01/03/0001.jpg/full/full/0/bitonal.jpg
+http://{your_server}/loris/01/04/0001.tif/full/full/0/color.jpg
+
+
 Setup the reboot script in the sudo crontab
 -------------------------------------------
 
