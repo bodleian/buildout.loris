@@ -5,8 +5,10 @@ CC = g++
 
 INCLUDES += -I../all_includes
 INCLUDES += -I../../apps/client_server
-INCLUDES += -I$(JAVA_HOME)/include       # or wherever the Java
-INCLUDES += -I$(JAVA_HOME)/include/linux # includes are on your system
+
+INCLUDES += -I/usr/lib/jvm/java-7-openjdk-amd64/include       # or wherever the Java
+INCLUDES += -I/usr/lib/jvm/java-7-openjdk-amd64/include/linux # includes are on your system
+
 C_OPT = -O2 -DNDEBUG -Wall
 C_OPT += $(KDU_GLIBS)
 C_OPT += -fPIC -m64
