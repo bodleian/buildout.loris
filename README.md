@@ -100,6 +100,16 @@ eggs-directory = /home/bodl-loris-svc/.buildout/eggs
 download-cache = /home/bodl-loris-svc/.buildout/downloads
 extends-cache = /home/bodl-loris-svc/.buildout/extends" >> ~/.buildout/default.cfg
 ```
+
+Upload Kakadu source to server for compilation
+----------------------------------------------
+
+```bash
+scp <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads
+```
+
+Buildout will compile the source and distribute the libraries and applications required (namely the shared object library and kdu_expand).
+
 Create a virtualenv and run the buildout
 ----------------------------------------
 ```bash
