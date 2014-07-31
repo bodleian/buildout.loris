@@ -104,8 +104,10 @@ extends-cache = /home/bodl-loris-svc/.buildout/extends" >> ~/.buildout/default.c
 Upload Kakadu source to server for compilation
 ----------------------------------------------
 
+With no top layer directory...
+
 ```bash
-scp <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads
+scp <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads/kakadu
 ```
 
 Buildout will compile the source and distribute the libraries and applications required (namely the shared object library and kdu_expand).
