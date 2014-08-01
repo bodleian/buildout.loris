@@ -104,10 +104,17 @@ extends-cache = /home/bodl-loris-svc/.buildout/extends" >> ~/.buildout/default.c
 Upload Kakadu source to server for compilation
 ----------------------------------------------
 
-With no top layer directory (this buildout is designed for Kakadu versions 6.4 to 7.4)...
+With no top layer directory (this buildout is designed for Kakadu versions 6.4 to 7.4).
+
+On your loris server:
 
 ```bash
 mkdir ~/Downloads/kakadu
+```
+
+From wherever your source files reside:
+
+```bash
 scp <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads/kakadu
 ```
 
