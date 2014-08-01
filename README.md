@@ -221,7 +221,7 @@ su - bodl-loris-svc
 Startup scripts and cron jobs (RHEL)
 ------------------------------------
 
-Add the following in ```/etc/sudoers```. This will allow the cron reboot directive to run sudo commands in ```bin/mldbctl```. This will reboot the php-fpm service and nginx on port 80.
+Add the following in ```/etc/sudoers```. This will allow the cron reboot directive to run sudo commands in ```bin/lorisctl```. This will reboot apache.
 
 ```bash
 Defaults:<sudo user as given in development/production.cfg> !requiretty
