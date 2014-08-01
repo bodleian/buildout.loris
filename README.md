@@ -180,6 +180,15 @@ sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/
 ```
 
+Test
+----
+
+Copy the test images into your image root:
+
+```bash 
+cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl-loris-svc/sites/bodl-loris-svc/var/images
+```
+
 Start Apache
 ------------
 
@@ -190,15 +199,6 @@ su - bodl-loris-svc
 cd ~/sites/bodl-loris-svc
 . bin/activate
 /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
-```
-
-Test
-----
-
-Copy the test images into your image root:
-
-```bash 
-cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl-loris-svc/sites/bodl-loris-svc/var/images
 ```
 
 Browse the following links to test:
