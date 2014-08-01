@@ -2,6 +2,8 @@ python-dev
 python-setuptools
 build-essential
 gcc
+g++
+make
 wget
 openssl
 libssl-dev
