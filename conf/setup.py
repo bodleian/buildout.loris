@@ -13,12 +13,21 @@ from loris.transforms import JP2_Transformer
 
 VERSION = loris.__version__
 
+#####################################################
+# should be put in config
 BIN_DP = '${buildout:directory}/src/loris/bin'
 ETC_DP = '${buildout:directory}/src/loris/etc'
 LIB_DP = '${buildout:directory}/src/loris/lib'
-
+######################################################
 KDU_EXPAND_TARGET = os.path.join(BIN_DP, 'kdu_expand')
-KDU_LIBS_TARGET = os.path.join(LIB_DP, JP2_Transformer.libkdu_name())
+
+######################################################
+# should be put in config
+
+# KDU_LIBS_TARGET = os.path.join(LIB_DP, JP2_Transformer.libkdu_name())
+KDU_LIBS_TARGET = os.path.join(LIB_DP, 'libkdu_v${kakadu:version}R.so')
+
+#######################################################
 LORIS_CACHE_CLEAN = os.path.join(BIN_DP, 'loris-cache_clean.sh')
 
 this_dp = os.path.abspath(os.path.dirname(__file__))

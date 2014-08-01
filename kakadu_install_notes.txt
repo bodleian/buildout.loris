@@ -15,3 +15,15 @@ Then:
 
 cd ./make
 sudo make -f Makefile-Linux-x86-64-gcc
+
+Make sure there is only one .so library in src/loris/lib/Linux/x86_64. If you're changing version of kakadu you'll need to delete the 7.2 version library there.
+
+Copy the test images over
+
+If you're installing anything other than version 7.2, you'll get the following error when installing loris:
+
+error: can't copy 'lib/Linux/x86_64/libkdu_v72R.so': doesn't exist or not a regular file
+
+Apart from the path issues in webapp.py, setup.py, it would seem the application is also hardcoded to version 7.2 of kakadu
+
+
