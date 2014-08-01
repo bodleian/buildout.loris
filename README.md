@@ -152,7 +152,7 @@ python setup.py install
 Installation complete message
 -----------------------------
 
-You should see the following information on your screen. You may want to save this information to a file.
+You should see the following information on your screen. 
 
 ```bash
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
@@ -170,8 +170,6 @@ Installation was successful. Here's where things are:
  * Temporary directory: /home/bodl-loris-svc/sites/bodl-loris-svc/tmp
 
 ```
-
-Ignore the rest.
 
 Setup library shortlinks
 ------------------------
