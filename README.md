@@ -185,8 +185,8 @@ sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/
 ```
 
-Test
-----
+Test images
+-----------
 
 Copy the test images into your image root:
 
