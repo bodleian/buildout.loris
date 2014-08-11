@@ -11,6 +11,8 @@ DEFINES += -DKDU_INCLUDE_TIFF
 
 in ./apps/make/Makefile-Linux-x86-64-gcc   
 
+(There's no libtiff5-dev and libtiff5 package in Ubuntu 12.0)
+
 Then:
 
 cd ./make
