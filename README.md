@@ -100,6 +100,17 @@ eggs-directory = /home/bodl-loris-svc/.buildout/eggs
 download-cache = /home/bodl-loris-svc/.buildout/downloads
 extends-cache = /home/bodl-loris-svc/.buildout/extends" >> ~/.buildout/default.cfg
 ```
+Change the IP address for apache config
+---------------------------------------
+
+edit development or production.cfg:
+
+```bash
+
+[hosts]
+internalIP = <your server internal IP address>
+externalIP = <your server external IP address>
+```
 
 Upload Kakadu source to server for compilation
 ----------------------------------------------
