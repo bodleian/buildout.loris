@@ -87,6 +87,7 @@ wget http://python-distribute.org/distribute_setup.py
 ~/python/2.7.6/bin/easy_install pip
 ~/python/2.7.6/bin/pip install virtualenv
 ```
+
 Setup the buildout cache
 ------------------------
 ```bash
@@ -126,7 +127,7 @@ mkdir ~/Downloads/kakadu
 From wherever your source files reside:
 
 ```bash
-scp <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads/kakadu
+scp -r <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads/kakadu
 ```
 
 Buildout will compile the source and distribute the libraries and applications required (namely the shared object library and kdu_expand).
@@ -202,6 +203,7 @@ Test images
 Copy the test images into your image root:
 
 ```bash 
+su - bodl-loris-svc
 cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl-loris-svc/sites/bodl-loris-svc/var/images
 ```
 
