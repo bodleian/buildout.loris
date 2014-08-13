@@ -57,6 +57,8 @@ except ImportError:
 #####################################################
 # should be put in config
 
+# line 103 also problematic
+
 ETC_DP = '${buildout:directory}/src/loris/etc'
 
 ######################################################
@@ -93,8 +95,16 @@ def create_app(debug=False):
         config['img.ImageCache']['cache_links'] = '/tmp/loris/cache/links'
         config['img.ImageCache']['cache_dp'] = '/tmp/loris/cache/img'
         config['img_info.InfoCache']['cache_dp'] = '/tmp/loris/cache/info'
-        config['resolver']['impl'] = 'SimpleFSResolver'
-        config['resolver']['src_img_root'] = path.join(project_dp,'tests','img')
+
+#####################################################
+# 1.2.2
+
+        config['resolver.Resolver']['src_img_root'] = path.join(project_dp, 'tests', 'img')
+
+######################################################
+# development
+#        config['resolver']['impl'] = 'SimpleFSResolver'
+#        config['resolver']['src_img_root'] = path.join(project_dp,'tests','img')
     else:
         conf_fp = path.join(ETC_DP, 'loris.conf')
         config = __config_to_dict(conf_fp)
