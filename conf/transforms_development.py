@@ -91,7 +91,7 @@ class _AbstractTransformer(object):
 			void (puts an image at target_fp)
 
 		'''
-		if crop and image_request.region_param.cannonical_uri_value != 'full':
+		if crop and image_request.region_param.canonical_uri_value != 'full':
 			# For PIL: "The box is a 4-tuple defining the left, upper, right,
 			# and lower pixel coordinate."
 			box = (
@@ -103,7 +103,7 @@ class _AbstractTransformer(object):
 			im = im.crop(box)
 
 		# resize
-		if image_request.size_param.cannonical_uri_value != 'full':
+		if image_request.size_param.canonical_uri_value != 'full':
 			wh = [int(image_request.size_param.w),int(image_request.size_param.h)]
 			# if kdu did the rotation and it's 90 or 270 then reverse w & h
 			if image_request.rotation_param.rotation in ['90','270']:
@@ -171,6 +171,7 @@ class JP2_Transformer(_AbstractTransformer):
 		self.tmp_dp = config['tmp_dp']
 		self.kdu_expand = config['kdu_expand']
 		self.mkfifo = config['mkfifo']
+		self.num_threads = config['num_threads']
 		self.map_profile_to_srgb = bool(config['map_profile_to_srgb'])
 		self.env = {
 			'LD_LIBRARY_PATH' : config['kdu_libs'], 
@@ -189,6 +190,7 @@ class JP2_Transformer(_AbstractTransformer):
 			if not path.exists(self.tmp_dp):
 				makedirs(self.tmp_dp)
 		except OSError as ose: 
+			# Almost certainly a permissions error on one of the required dirs
 			from sys import exit
 			from os import strerror
 			msg = '%s (%s)' % (strerror(ose.errno),ose.filename)
@@ -211,7 +213,7 @@ class JP2_Transformer(_AbstractTransformer):
 	def libkdu_name():
 		system = platform.system()
 		if system == 'Linux':
-			return 'libkdu_v${kakadu:version}R.so'
+			return 'libkdu_v${kakadu:version}.so'
 		elif system == 'Darwin':
 			return 'libkdu_v73R.dylib'
 	#
@@ -291,7 +293,7 @@ class JP2_Transformer(_AbstractTransformer):
 
 		# kdu command
 		q = '-quiet'
-		t = '-num_threads 8'
+		t = '-num_threads %s' % (self.num_threads)
 		i = '-i %s' % (src_fp,)
 		o = '-o %s' % (fifo_fp,)
 
@@ -338,3 +340,4 @@ class JP2_Transformer(_AbstractTransformer):
 			im = profileToProfile(im, emb_profile, self.srgb_profile_fp)
 
 		JP2_Transformer._derive_with_pil(im, target_fp, image_request, rotate=rotate_downstream, crop=False)
+
