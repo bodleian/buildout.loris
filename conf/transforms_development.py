@@ -213,7 +213,7 @@ class JP2_Transformer(_AbstractTransformer):
 	def libkdu_name():
 		system = platform.system()
 		if system == 'Linux':
-			return 'libkdu_v${kakadu:version}.so'
+			return 'libkdu_v${kakadu:version}R.so'
 		elif system == 'Darwin':
 			return 'libkdu_v73R.dylib'
 	#
