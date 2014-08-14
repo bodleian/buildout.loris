@@ -150,7 +150,7 @@ Install eggs (temporary)
 ```bash
 pip install pillow==2.5.0
 pip install werkzeug==0.9.6
-pip install configobj
+pip install configobj==5.0.5
 ```
 
 Install Loris
