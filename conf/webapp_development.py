@@ -1,25 +1,27 @@
+#!/usr/bin/env python
 #-*- coding: utf-8 -*-
 """
 webapp.py
 =========
 Implements IIIF 1.1 <http://www-sul.stanford.edu/iiif/image-api/1.1> level 2
 
-Copyright (C) 2013 Jon Stroop
+    Copyright (C) 2013 Jon Stroop
 
-This program is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the Free
-Software Foundation, either version 3 of the License, or (at your option)
-any later version.
+    This program is free software: you can redistribute it and/or modify it 
+    under the terms of the GNU General Public License as published by the Free 
+    Software Foundation, either version 3 of the License, or (at your option) 
+    any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-more details.
+    This program is distributed in the hope that it will be useful, but WITHOUT 
+    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or 
+    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for 
+    more details.
 
-You should have received a copy of the GNU General Public License along
-with this program. If not, see <http://www.gnu.org/licenses/>.
+    You should have received a copy of the GNU General Public License along 
+    with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
-from ConfigParser import RawConfigParser
+# from ConfigParser import RawConfigParser
+from configobj import ConfigObj
 from datetime import datetime
 from decimal import Decimal, getcontext
 from img_info import ImageInfo
@@ -51,17 +53,13 @@ try:
 except ImportError:
     import uuid
 
-# Loris's etc dir MUST either be a sibling to the loris/loris directory or at
+# Loris's etc dir MUST either be a sibling to the loris/loris directory or at 
 # the below:
 
-#####################################################
-# should be put in config
-
-# line 103 also problematic
+################################################
+# to be put in conf - CTB
 
 ETC_DP = '${buildout:directory}/src/loris/etc'
-
-######################################################
 
 # We can figure out everything else from there.
 
@@ -71,9 +69,10 @@ def create_app(debug=False):
     global logger
     if debug:
         project_dp = path.dirname(path.dirname(path.realpath(__file__)))
+
         # read the config
-        conf_fp = path.join(project_dp, 'etc', 'loris.conf')
-        config = __config_to_dict(conf_fp)
+        config_fp = path.join(project_dp, 'etc', constants.CONFIG_FILE_NAME)
+        config = ConfigObj(config_fp, unrepr=True, interpolation=False)
 
         config['logging']['log_to'] = 'console'
         config['logging']['log_level'] = 'DEBUG'
@@ -95,25 +94,17 @@ def create_app(debug=False):
         config['img.ImageCache']['cache_links'] = '/tmp/loris/cache/links'
         config['img.ImageCache']['cache_dp'] = '/tmp/loris/cache/img'
         config['img_info.InfoCache']['cache_dp'] = '/tmp/loris/cache/info'
-
-#####################################################
-# 1.2.2
-
-        config['resolver.Resolver']['src_img_root'] = path.join(project_dp, 'tests', 'img')
-
-######################################################
-# development
-#        config['resolver']['impl'] = 'SimpleFSResolver'
-#        config['resolver']['src_img_root'] = path.join(project_dp,'tests','img')
+        config['resolver']['impl'] = 'SimpleFSResolver' 
+        config['resolver']['src_img_root'] = path.join(project_dp,'tests','img')
     else:
-        conf_fp = path.join(ETC_DP, 'loris.conf')
-        config = __config_to_dict(conf_fp)
+        config_fp = path.join(ETC_DP, constants.CONFIG_FILE_NAME)
+        config = ConfigObj(config_fp, unrepr=True, interpolation=False)
         __configure_logging(config['logging'])
         logger = logging.getLogger(__name__)
         logger.debug('Running in production mode.')
 
 
-    # Make any dirs we may need
+    # Make any dirs we may need 
     dirs_to_make = []
     try:
         dirs_to_make.append(config['loris.Loris']['tmp_dp'])
@@ -124,7 +115,7 @@ def create_app(debug=False):
             dirs_to_make.append(config['img.ImageCache']['cache_links'])
             dirs_to_make.append(config['img_info.InfoCache']['cache_dp'])
         [makedirs(d) for d in dirs_to_make if not path.exists(d)]
-    except OSError as ose:
+    except OSError as ose: 
         from sys import exit
         from os import strerror
         # presumably it's permissions
@@ -137,34 +128,11 @@ def create_app(debug=False):
 
 def __transform_sections_from_config(config):
     '''
-Args:
-config (dict)
-'''
+    Args:
+        config (dict)
+    '''
     filt = lambda s: s.split('.')[0] == 'transforms'
     return filter(filt, config.keys())
-
-def __config_to_dict(conf_fp):
-    config_parser = RawConfigParser()
-    config_parser.read(conf_fp)
-    config = {}
-
-    # shortcut, but everything comes in as a str
-    [config.__setitem__(section, dict(config_parser.items(section)))
-        for section in config_parser.sections()]
-
-    # convert bools
-    b = bool(int(config['loris.Loris']['enable_caching']))
-    config['loris.Loris']['enable_caching'] = b
-
-    b = bool(int(config['loris.Loris']['redirect_cannonical_image_request']))
-    config['loris.Loris']['redirect_cannonical_image_request'] = b
-
-    # convert transforms.*.target_formats to lists
-    for tf in __transform_sections_from_config(config):
-        config[tf]['target_formats'] = [s.strip() for s in config[tf]['target_formats'].split(',')]
-
-    return config
-
 
 def __configure_logging(config):
     logger = logging.getLogger()
@@ -183,7 +151,7 @@ def __configure_logging(config):
         if not getattr(logger, 'handler_set', None):
             fp = '%s.log' % (path.join(config['log_dir'], 'loris'),)
             handler = RotatingFileHandler(fp,
-                maxBytes=config['max_size'],
+                maxBytes=config['max_size'], 
                 backupCount=config['max_backups'],
                 delay=True)
             handler.setFormatter(formatter)
@@ -207,23 +175,23 @@ def __configure_logging(config):
 
 class StdErrFilter(logging.Filter):
     '''Logging filter for stderr
-'''
+    '''
     def filter(self,record):
         return 1 if record.levelno >= 30 else 0
 
 class StdOutFilter(logging.Filter):
     '''Logging filter for stdout
-'''
+    '''
     def filter(self,record):
         return 1 if record.levelno <= 20 else 0
 
 class LorisResponse(BaseResponse, CommonResponseDescriptorsMixin):
-    '''Similar to Response, but IIIF Compliance Link and
-Access-Control-Allow-Origin Headers are added and none of the
-ETagResponseMixin, ResponseStreamMixin, or WWWAuthenticateMixin
-capabilities are included.
-See: http://werkzeug.pocoo.org/docs/wrappers/#werkzeug.wrappers.Response
-'''
+    '''Similar to Response, but IIIF Compliance Link and 
+    Access-Control-Allow-Origin Headers are added and none of the
+    ETagResponseMixin, ResponseStreamMixin, or WWWAuthenticateMixin 
+    capabilities are included.
+    See: http://werkzeug.pocoo.org/docs/wrappers/#werkzeug.wrappers.Response
+    '''
     def __init__(self, response=None, status=None, content_type=None):
         super(LorisResponse, self).__init__(response=response, status=status, content_type=content_type)
         self.headers['Link'] = '<%s>;rel="profile"' % (constants.COMPLIANCE,)
@@ -244,12 +212,12 @@ class Loris(object):
     FMT_REGEX = re.compile('^(default|color|gray|bitonal).\w{3}$')
     def __init__(self, app_configs={ }, debug=False):
         '''The WSGI Application.
-Args:
-config ({}):
-A dictionary of dictionaries that represents the loris.conf
-file.
-debug (bool)
-'''
+        Args:
+            config ({}): 
+                A dictionary of dictionaries that represents the loris.conf 
+                file.
+            debug (bool)
+        '''
         self.app_configs = app_configs
         logger.debug('Loris initialized with these settings:')
         [logger.debug('%s.%s=%s' % (key, sub_key, self.app_configs[key][sub_key]))
@@ -262,12 +230,13 @@ debug (bool)
         self.tmp_dp = _loris_config['tmp_dp']
         self.www_dp = _loris_config['www_dp']
         self.enable_caching = _loris_config['enable_caching']
-        self.redirect_cannonical_image_request = _loris_config['redirect_cannonical_image_request']
+        self.redirect_canonical_image_request = _loris_config['redirect_canonical_image_request']
+        self.redirect_id_slash_to_info = _loris_config['redirect_id_slash_to_info']
         self.default_format = _loris_config['default_format']
 
-        # TODO: make sure loading transformers makes sense. What am I doing
+        # TODO: make sure loading  transformers makes sense. What am I doing
         # with derive_formats here?
-        deriv_formats = [tf.split('.')[1]
+        deriv_formats = [tf.split('.')[1] 
             for tf in filter(lambda k: k.startswith('transforms.'), self.app_configs)]
 
         logger.debug(deriv_formats)
@@ -307,9 +276,9 @@ debug (bool)
         return response(environ, start_response)
 
     def route(self, request):
-        base_uri, ident, params = Loris._dissect_uri(request)
+        base_uri, ident, params = self._dissect_uri(request)
         # index.txt
-        if ident == '':
+        if ident == '': 
             return self.get_index(request)
         slices = params.split('/')
         info_or_quality_dot_format = slices.pop()
@@ -341,14 +310,14 @@ debug (bool)
 
     def __call__(self, environ, start_response):
         '''
-This makes Loris executable.
-'''
+        This makes Loris executable.
+        '''
         return self.wsgi_app(environ, start_response)
 
     def get_index(self, request):
         '''
-Just so there's something at /.
-'''
+        Just so there's something at /.
+        '''
         f = file(path.join(self.www_dp, 'index.txt'))
         r = Response(f, content_type='text/plain')
         if self.enable_caching:
@@ -384,13 +353,18 @@ Just so there's something at /.
             else:
                 if last_mod:
                     r.last_modified = last_mod
-                r.automatically_set_content_length
+                # r.automatically_set_content_length
                 callback = request.args.get('callback', None)
                 if callback:
                     r.mimetype = 'application/javascript'
                     r.data = '%s(%s);' % (callback, info.to_json())
                 else:
-                    r.content_type = 'application/json'
+                    if request.headers.get('accept') == 'application/ld+json':
+                        r.content_type = 'application/ld+json'
+                    else:
+                        r.content_type = 'application/json'
+                        l = '<http://iiif.io/api/image/2/context.json>;rel="http://www.w3.org/ns/json-ld#context";type="application/ld+json"'
+                        r.headers['Link'] = '%s,%s' % (r.headers['Link'], l)
                     r.data = info.to_json()
         finally:
             return r
@@ -429,17 +403,17 @@ Just so there's something at /.
             return (info,last_mod)
     
     def get_img(self, request, ident, region, size, rotation, quality, target_fmt):
-        '''Get an Image.
-Args:
-request (Request):
-Forwarded by dispatch_request
-ident (str):
-The identifier portion of the IIIF URI syntax
+        '''Get an Image. 
+        Args:
+            request (Request): 
+                Forwarded by dispatch_request
+            ident (str): 
+                The identifier portion of the IIIF URI syntax
 
-'''
+        '''
         r = LorisResponse()
-        # ImageRequest's Parameter attributes, i.e. RegionParameter etc. are
-        # decorated with @property and not constructed until they are first
+        # ImageRequest's Parameter attributes, i.e. RegionParameter etc. are 
+        # decorated with @property and not constructed until they are first 
         # accessed, which mean we don't have to catch any exceptions here.
         image_request = img.ImageRequest(ident, region, size, rotation, quality, target_fmt)
 
@@ -471,19 +445,32 @@ The identifier portion of the IIIF URI syntax
                 r.last_modified = img_last_mod
                 r.headers['Content-Length'] = path.getsize(fp)
                 r.response = file(fp)
+
+                # resolve the identifier
+                src_fp, src_format = self.resolver.resolve(ident)
+                # hand the Image object its info
+                info = self._get_info(ident, request, src_fp, src_format)[0]
+                image_request.info = info
+                # we need to do the above to set the canonical link header
+
+                canonical_uri = '%s%s' % (request.url_root, image_request.c14n_request_path)
+                r.headers['Link'] = '%s,<%s>;rel="canonical"' % (r.headers['Link'], canonical_uri,)
+
+
                 return r
         else:
             try:
-                # 1. resolve the identifier
+
+                # 1. Resolve the identifier
                 src_fp, src_format = self.resolver.resolve(ident)
 
-                # 2 hand the Image object its info
+                # 2. Hand the Image object its info
                 info = self._get_info(ident, request, src_fp, src_format)[0]
                 image_request.info = info
 
                 # 3. Redirect if appropriate
-                if self.redirect_cannonical_image_request:
-                    if not image_request.is_cannonical:
+                if self.redirect_canonical_image_request:
+                    if not image_request.is_canonical:
                         logger.debug('Attempting redirect to %s' % (image_request.c14n_request_path,))
                         r.headers['Location'] = image_request.c14n_request_path
                         r.status_code = 301
@@ -492,8 +479,8 @@ The identifier portion of the IIIF URI syntax
                 # 4. Make an image
                 fp = self._make_image(image_request, src_fp, src_format)
                 
-            except (resolver.ResolverException, ImageInfoException,
-                img.ImageException, RegionSyntaxException,
+            except (resolver.ResolverException, ImageInfoException, 
+                img.ImageException, RegionSyntaxException, 
                 RegionRequestException, SizeSyntaxException,
                 SizeRequestException, RotationSyntaxException) as e:
                 r.response = e
@@ -505,6 +492,8 @@ The identifier portion of the IIIF URI syntax
         r.status_code = 200
         r.last_modified = datetime.utcfromtimestamp(path.getctime(fp))
         r.headers['Content-Length'] = path.getsize(fp)
+        canonical_uri = '%s%s' % (request.url_root, image_request.c14n_request_path)
+        r.headers['Link'] = '%s,<%s>;rel="canonical"' % (r.headers['Link'], canonical_uri,)
         r.response = file(fp)
 
         if not self.enable_caching:
@@ -514,13 +503,13 @@ The identifier portion of the IIIF URI syntax
 
     def _make_image(self, image_request, src_fp, src_format):
         '''
-Args:
-image_request (img.ImageRequest)
-src_fp (str)
-src_format (str)
-Returns:
-(str) the fp of the new image
-'''
+        Args:
+            image_request (img.ImageRequest)
+            src_fp (str)
+            src_format (str)
+        Returns:
+            (str) the fp of the new image
+        '''
         # figure out paths, make dirs
         if self.enable_caching:
             p = path.join(self.img_cache.cache_root, Loris._get_uuid_path())
@@ -539,7 +528,7 @@ Returns:
         transformer = self.transformers[src_format]
 
         transformer.transform(src_fp, target_fp, image_request)
-        # cache if caching (this makes symlinks for next time)
+        #  cache if caching (this makes symlinks for next time)
         if self.enable_caching:
             self.img_cache[image_request] = target_fp
 
@@ -553,8 +542,7 @@ Returns:
         _id = uuid.uuid1().hex
         return path.sep.join([_id[i:i+2] for i in range(0, len(_id), 2)])
 
-    @staticmethod
-    def _dissect_uri(r):
+    def _dissect_uri(self, r):
         ident = None
         params = None
         # info
@@ -569,6 +557,10 @@ Returns:
         # bare
         else:
             ident = r.path[1:] # no leading slash
+            if self.redirect_id_slash_to_info and ident.endswith('/'): 
+                ident = ident[:-1]
+                # ... you're in trouble if your identifier has a trailing slash
+
             params = ''
         ident = quote_plus(ident)
 
@@ -595,4 +587,3 @@ if __name__ == '__main__':
 
     run_simple('localhost', 5004, app, use_debugger=True, use_reloader=True,
         extra_files=extra_files)
-    
