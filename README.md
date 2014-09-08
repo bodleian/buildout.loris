@@ -1,6 +1,8 @@
 Installation
 ============
 
+![alt tag](https://travis-ci.org/BDLSS/buildout.loris.svg?branch=master)
+
 Create user "bodl-loris-svc"
 ------------------
 
