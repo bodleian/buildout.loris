@@ -1,6 +1,8 @@
 Installation
 ============
 
+Travis only offers Ubuntu 12.04 builds. This Loris build is intended for Ubuntu 14.0. Hence the non-pass warning below.
+
 ![alt tag](https://travis-ci.org/BDLSS/buildout.loris.svg?branch=master)
 
 Create user "bodl-loris-svc"
