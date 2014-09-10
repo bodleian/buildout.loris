@@ -9,4 +9,4 @@ install:
 - buildout init
 - bin/buildout -N -t 3 -c travis.cfg
 script:
-- bash -ex test.sh
+- py.test tests/
