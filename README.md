@@ -1,7 +1,7 @@
 Installation
 ============
 
-Travis only offers Ubuntu 12.04 builds. This Loris build is intended for Ubuntu 14.0. Hence the non-pass warning below.
+Travis only offers Ubuntu 12.04 builds. This Loris build is intended for Ubuntu 14.0. However, it can be installed on 12.0 by following the instructions given in section "Setup server (Debian/Ubuntu)".
 
 ![alt tag](https://travis-ci.org/BDLSS/buildout.loris.svg?branch=master)
 
@@ -58,11 +58,21 @@ git clone gitlab@source.bodleian.ox.ac.uk:loris/buildout.loris.git ./
 Setup server (Debian/Ubuntu)
 ----------------------------
 
+Append ``_ubuntu12`` or ``_ubuntu14`` to the ubuntu_requirements file accordingly.
+
 ```bash
 su - <sudo user>
-sudo apt-get install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements)
+sudo apt-get install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements[_ubuntu12 or _ubuntu14])
 su - bodl-loris-svc
 ```
+
+Ubuntu 12 is set as default in the ``.travis.yml`` as follows:
+
+```bash
+install:
+- sudo apt-get install $(cat ubuntu_requirements_ubuntu12)
+```
+
 Setup server (RHEL>=6)
 ----------------------------
 
@@ -265,3 +275,31 @@ It will stop/start/restart Loris. It runs under a @reboot directive in the sudo 
 ```bash
 @reboot /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start > /home/bodl-loris-svc/sites/bodl-loris-svc/var/log/reboot.log 2>&1
 ```
+
+Continuous Integration
+----------------------
+
+.travis.yml and jenkins.sh files are made available for CI configuration.
+
+Currently, Travis builds are available at:
+
+https://travis-ci.org/BDLSS
+
+Builds are run with every GIT commit (after a push). This can be skipped by entering ``[skip ci]`` in the commit message.
+
+Loris has an issue with Travis as the native version of Python compiled on the Travis VM isn't configured with ``./configure --prefix=$HOME/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/home/bodl-loris-svc/python/2.7.6/lib"``.
+
+The main problem appears to be the ``enable-shared`` setting, althought the ``enable-unicode=ucs4`` has also caused other problems in the past.
+
+
+Functional and Unit Testing
+---------------------------
+
+Pytest is used and is executed in the .travis.wml file as follows:
+
+```bash
+script:
+- py.test tests/
+```
+
+This runs all test scripts using the filename format of ``test_<something>.py`` in the ``tests/`` folder.
