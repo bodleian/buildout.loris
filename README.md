@@ -289,13 +289,13 @@ Builds are run with every GIT commit (after a push). This can be skipped by ente
 
 Loris has an issue with Travis as the native version of Python compiled on the Travis VM isn't configured with ``./configure --prefix=$HOME/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/home/bodl-loris-svc/python/2.7.6/lib"``.
 
-The main problem appears to be the ``enable-shared`` setting, althought the ``enable-unicode=ucs4`` has also caused other problems in the past.
+The main problem appears to be the ``enable-shared`` setting, although the ``enable-unicode=ucs4`` has also caused other problems in the past.
 
 
 Functional and Unit Testing
 ---------------------------
 
-Pytest is used and is executed in the .travis.wml file as follows:
+Pytest is executed in the .travis.yml file as follows:
 
 ```bash
 script:
