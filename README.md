@@ -165,6 +165,7 @@ Install eggs (temporary)
 pip install pillow==2.5.0
 pip install werkzeug==0.9.6
 pip install configobj==5.0.5
+pip install pytest==2.6.2
 ```
 
 Install Loris
