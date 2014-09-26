@@ -4,7 +4,7 @@ FROM ubuntu:14.04
 RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
 RUN apt-get install $(cat ubuntu_requirements_ubuntu14)
 
-RUN easy_install pip
+RUN /usr/bin/easy_install pip
 RUN pip install --upgrade pip 
 
 RUN pip install zc.buildout
