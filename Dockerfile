@@ -15,7 +15,8 @@ RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgr
 # Add github.com key
 #RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 #RUN git clone git@github.com:BDLSS/buildout.loris.git
-RUN ADD / ~/testbuild/
+RUN mkdir ~/testbuild
+ADD / ~/testbuild/
 RUN apt-get -y install $(cat testbuild/ubuntu_requirements_ubuntu14)
 RUN mkdir ~/Downloads
 RUN wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate
