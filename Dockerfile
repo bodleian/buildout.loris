@@ -2,6 +2,17 @@
 
 FROM ubuntu:14.04
 RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
+# Install git
+RUN apt-get install -y git
+# Make ssh dir
+RUN mkdir /root/.ssh/
+# Copy over private key, and set permissions
+ADD id_rsa /root/.ssh/id_rsa
+# Create known_hosts
+RUN touch /root/.ssh/known_hosts
+# Add github.com key
+RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
+RUN git clone git@github.com:BDLSS/buildout.loris.git
 RUN apt-get -y install $(cat ubuntu_requirements_ubuntu14)
 RUN mkdir ~/Downloads
 RUN wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate
