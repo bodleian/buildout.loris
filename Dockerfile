@@ -7,7 +7,9 @@ RUN apt-get install -y git
 # Make ssh dir
 RUN mkdir /root/.ssh/
 # Copy over private key, and set permissions
-ADD id_rsa /root/.ssh/id_rsa
+ADD ssh-keygen -t /root/.ssh/id_rsa
+# required, apparently..
+RUN echo " IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 # Create known_hosts
 RUN touch /root/.ssh/known_hosts
 # Add github.com key
