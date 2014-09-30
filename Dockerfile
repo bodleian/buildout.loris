@@ -2,7 +2,6 @@
 
 FROM ubuntu:14.04
 RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
-RUN sudo apt-get install git
 RUN git clone git@github.com:BDLSS/buildout.loris.git
 RUN apt-get install $(cat ubuntu_requirements_ubuntu14)
 RUN mkdir ~/Downloads
