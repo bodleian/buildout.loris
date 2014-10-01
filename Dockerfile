@@ -15,5 +15,4 @@ RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgr
 # Add github.com key
 #RUN ssh-keyscan github.com >> /root/.ssh/known_hosts
 #RUN git clone git@github.com:BDLSS/buildout.loris.git
-RUN pwd
-
+RUN (pwd && ls -lah)
