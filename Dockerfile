@@ -16,11 +16,11 @@ RUN /root/python/2.7.6/bin/python /root/Downloads/distribute-0.6.49/distribute_s
 RUN /root/python/2.7.6/bin/easy_install pip
 RUN /root/python/2.7.6/bin/pip install virtualenv
 RUN /root/python/2.7.6/bin/virtualenv /root/testbuild/
-RUN (ls /root/testbuild/bin && source /root/testbuild/bin/activate)
-RUN pip install zc.buildout
-RUN pip install distribute
-RUN buildout init
-RUN buildout -c development.cfg
+#RUN (ls /root/testbuild/bin && source /root/testbuild/bin/activate)
+RUN /root/testbuild/bin/pip install zc.buildout
+RUN /root/testbuild/bin/pip install distribute
+RUN /root/testbuild/bin/buildout init
+RUN /root/testbuild/bin/buildout -c development.cfg
 RUN py.test tests/
 #EXPOSE 8080
 #CMD["loris", "/"]
