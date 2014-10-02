@@ -11,7 +11,7 @@ RUN (cd /root/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.
 RUN /root/Downloads/Python-2.7.6/configure --prefix=/root/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/root/python/2.7.6/lib"
 RUN make
 RUN make install
-RUN (cd /root/Downloads && wget https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz && tar zxfv distribute-0.6.49.tar.gz && ls -lah /root/Downloads) 
+RUN (cd /root/Downloads && wget https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz && tar zxfv distribute-0.6.49.tar.gz) 
 RUN /root/python/2.7.6/bin/python /root/Downloads/distribute-0.6.49/distribute_setup.py
 RUN /root/python/2.7.6/bin/easy_install pip
 RUN /root/python/2.7.6/bin/pip install virtualenv
@@ -21,7 +21,6 @@ RUN /root/testbuild/bin/pip install zc.buildout
 RUN /root/testbuild/bin/pip install distribute
 RUN /root/testbuild/bin/buildout init
 ENV PATH /usr/bin
-RUN (PATH=/usr/bin:$PATH && echo $PATH)
 RUN /root/testbuild/bin/buildout -c /root/testbuild/development_docker.cfg
 RUN py.test tests/
 #EXPOSE 8080
