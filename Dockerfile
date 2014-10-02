@@ -20,7 +20,7 @@ RUN /root/python/2.7.6/bin/virtualenv /root/testbuild/
 RUN /root/testbuild/bin/pip install zc.buildout
 RUN /root/testbuild/bin/pip install distribute
 RUN /root/testbuild/bin/buildout init
-RUN /root/testbuild/bin/buildout -c development.cfg
+RUN /root/testbuild/bin/buildout -c /root/testbuild/development.cfg
 RUN py.test tests/
 #EXPOSE 8080
 #CMD["loris", "/"]
