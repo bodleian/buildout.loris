@@ -1,6 +1,7 @@
 python-dev
 python-setuptools
 build-essential
+git
 gcc
 g++
 make
