@@ -20,7 +20,7 @@ RUN /root/python/2.7.6/bin/virtualenv /root/testbuild/
 RUN /root/testbuild/bin/pip install zc.buildout
 RUN /root/testbuild/bin/pip install distribute
 RUN /root/testbuild/bin/buildout init
-ENV PATH /usr/bin
+#ENV PATH /usr/bin
 RUN /root/testbuild/bin/buildout -c /root/testbuild/development_docker.cfg
 RUN py.test tests/
 #EXPOSE 8080
