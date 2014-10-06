@@ -4,7 +4,6 @@ FROM ubuntu:14.04
 RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
 RUN mkdir -p /root/sites/testbuild
 ADD / /root/sites/testbuild/
-RUN ls -lah /root/testbuild/
 RUN apt-get -y install $(cat /root/sites/testbuild/ubuntu_requirements_ubuntu14)
 RUN mkdir /root/Downloads
 RUN (cd /root/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /root/Downloads/Python-2.7.6)
