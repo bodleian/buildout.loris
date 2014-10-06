@@ -6,7 +6,7 @@ RUN mkdir -p /root/sites/testbuild
 ADD / /root/sites/testbuild/
 RUN apt-get -y install $(cat /root/sites/testbuild/ubuntu_requirements_ubuntu14)
 RUN mkdir -p /root/Downloads/kakadu
-RUN mv /kakadu /root/Downloads/kakadu/
+RUN mv /kakadu/* /root/Downloads/kakadu/
 RUN (cd /root/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /root/Downloads/Python-2.7.6)
 RUN /root/Downloads/Python-2.7.6/configure --prefix=/root/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/root/python/2.7.6/lib"
 RUN make
