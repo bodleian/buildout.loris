@@ -2,7 +2,7 @@
 
 FROM ubuntu:14.04
 RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
-RUN mkdir /root/sites/testbuild
+RUN mkdir -p /root/sites/testbuild
 ADD / /root/sites/testbuild/
 RUN ls -lah /root/testbuild/
 RUN apt-get -y install $(cat /root/sites/testbuild/ubuntu_requirements_ubuntu14)
