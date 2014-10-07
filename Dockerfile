@@ -19,7 +19,7 @@ RUN /root/python/2.7.6/bin/virtualenv /root/sites/testbuild/
 #RUN (ls /root/sites/testbuild/bin && source /root/sites/testbuild/bin/activate)
 RUN /root/sites/testbuild/bin/pip install zc.buildout
 RUN /root/sites/testbuild/bin/pip install distribute
-RUN /root/sites//testbuild/bin/buildout init
+RUN /root/sites/testbuild/bin/buildout init
 RUN cd /root/sites/testbuild/
 RUN /root/sites/testbuild/bin/buildout -c /root/sites/testbuild/development_docker.cfg
 RUN py.test /root/sites/testbuild/tests/
