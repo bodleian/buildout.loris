@@ -16,7 +16,7 @@ RUN /root/python/2.7.6/bin/python /root/Downloads/distribute-0.6.49/distribute_s
 RUN /root/python/2.7.6/bin/easy_install pip
 RUN /root/python/2.7.6/bin/pip install virtualenv
 RUN /root/python/2.7.6/bin/virtualenv /root/sites/testbuild/
-#RUN (ls /root/sites/testbuild/bin && source /root/sites/testbuild/bin/activate)
+RUN source /root/sites/testbuild/bin/activate
 RUN /root/sites/testbuild/bin/pip install zc.buildout
 RUN /root/sites/testbuild/bin/pip install distribute
 RUN /root/sites/testbuild/bin/buildout init
