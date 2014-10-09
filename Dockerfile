@@ -23,6 +23,6 @@ RUN (cd /root/sites/testbuild/ && /root/sites/testbuild/bin/buildout init)
 RUN cd /root/sites/testbuild/
 RUN /root/sites/testbuild/bin/buildout -c /root/sites/testbuild/development_docker.cfg
 RUN py.test /root/sites/testbuild/tests/
-#EXPOSE 8080
+EXPOSE 8080
 #CMD["loris", "/"]
 
