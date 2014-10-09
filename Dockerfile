@@ -14,15 +14,14 @@ RUN make install
 RUN (cd /root/Downloads && wget https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz && tar zxfv distribute-0.6.49.tar.gz) 
 RUN /root/python/2.7.6/bin/python /root/Downloads/distribute-0.6.49/distribute_setup.py
 RUN /root/python/2.7.6/bin/easy_install pip
-RUN /root/python/2.7.6/bin/pip install virtualenv
-RUN (cd /root/sites/testbuild && /root/python/2.7.6/bin/virtualenv ./)
-RUN (cd /root/sites/testbuild && . bin/activate)
+#RUN /root/python/2.7.6/bin/pip install virtualenv
+#RUN (cd /root/sites/testbuild && /root/python/2.7.6/bin/virtualenv ./)
+#RUN (cd /root/sites/testbuild && . bin/activate)
 RUN /root/sites/testbuild/bin/pip install zc.buildout
 RUN /root/sites/testbuild/bin/pip install distribute
 RUN (cd /root/sites/testbuild/ && /root/sites/testbuild/bin/buildout init)
-RUN cd /root/sites/testbuild/
 RUN /root/sites/testbuild/bin/buildout -c /root/sites/testbuild/development_docker.cfg
-RUN py.test /root/sites/testbuild/tests/
+RUN /root/sites/testbuild/bin/py.test /root/sites/testbuild/tests/
 EXPOSE 8080
 #CMD["loris", "/"]
 
