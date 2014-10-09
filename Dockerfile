@@ -17,10 +17,10 @@ RUN /root/python/2.7.6/bin/easy_install pip
 #RUN /root/python/2.7.6/bin/pip install virtualenv
 #RUN (cd /root/sites/testbuild && /root/python/2.7.6/bin/virtualenv ./)
 #RUN (cd /root/sites/testbuild && . bin/activate)
-RUN /root/sites/testbuild/bin/pip install zc.buildout
-RUN /root/sites/testbuild/bin/pip install distribute
-RUN (cd /root/sites/testbuild/ && /root/sites/testbuild/bin/buildout init)
-RUN /root/sites/testbuild/bin/buildout -c /root/sites/testbuild/development_docker.cfg
+RUN /root/python/2.7.6/bin/pip install zc.buildout
+RUN /root/python/2.7.6/bin/pip install distribute
+RUN (/root/python/2.7.6/bin/buildout init)
+RUN /root/python/2.7.6/bin/buildout -c /root/sites/testbuild/development_docker.cfg
 RUN /root/sites/testbuild/bin/py.test /root/sites/testbuild/tests/
 EXPOSE 8080
 #CMD["loris", "/"]
