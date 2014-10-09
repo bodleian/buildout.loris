@@ -16,10 +16,10 @@ RUN /root/python/2.7.6/bin/python /root/Downloads/distribute-0.6.49/distribute_s
 RUN /root/python/2.7.6/bin/easy_install pip
 RUN /root/python/2.7.6/bin/pip install virtualenv
 RUN /root/python/2.7.6/bin/virtualenv /root/sites/testbuild/
-RUN . /root/sites/testbuild/bin/activate
+RUN (cd /root/sites/testbuild && . bin/activate)
 RUN /root/sites/testbuild/bin/pip install zc.buildout
 RUN /root/sites/testbuild/bin/pip install distribute
-RUN /root/sites/testbuild/bin/buildout init
+RUN (cd /root/sites/testbuild/ && /root/sites/testbuild/bin/buildout init)
 RUN cd /root/sites/testbuild/
 RUN /root/sites/testbuild/bin/buildout -c /root/sites/testbuild/development_docker.cfg
 RUN py.test /root/sites/testbuild/tests/
