@@ -15,7 +15,7 @@ RUN (cd /root/Downloads && wget https://pypi.python.org/packages/source/d/distri
 RUN /root/python/2.7.6/bin/python /root/Downloads/distribute-0.6.49/distribute_setup.py
 RUN /root/python/2.7.6/bin/easy_install pip
 RUN /root/python/2.7.6/bin/pip install virtualenv
-RUN /root/python/2.7.6/bin/virtualenv /root/sites/testbuild/
+RUN (cd /root/sites/testbuild && /root/python/2.7.6/bin/virtualenv ./)
 RUN (cd /root/sites/testbuild && . bin/activate)
 RUN /root/sites/testbuild/bin/pip install zc.buildout
 RUN /root/sites/testbuild/bin/pip install distribute
