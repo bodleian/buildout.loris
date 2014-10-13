@@ -6,6 +6,7 @@ gcc
 g++
 make
 wget
+curl
 openssl
 libssl-dev
 libjpeg-turbo8 
