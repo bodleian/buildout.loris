@@ -35,7 +35,9 @@ RUN mkdir -p /root/Downloads
 # --------------------------- GET KAKADU ----------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v${kakadu:version}.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v${kakadu:version}.zip && unzip -d kakadu Kakadu_v${kakadu:version}.zip)
+# change Kakadu_v<number>.zip for different versions: 64, 72, 74, etc.
+
+RUN (cd /root/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip && unzip -d kakadu Kakadu_v74.zip)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL PYTHON ------------------------------
