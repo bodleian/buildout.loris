@@ -67,7 +67,7 @@ RUN (cd /root/sites/testbuild && /root/python/2.7.6/bin/virtualenv . && . bin/ac
 # --------------------------- INSTALL LORIS -------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/src/loris && python /root/sites/testbuild/src/loris/setup.py install)
+RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/src/loris && python setup.py install)
 
 # -------------------------------------------------------------------------
 # --------------------------- SHORTLINKS ----------------------------------
