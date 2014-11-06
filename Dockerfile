@@ -86,5 +86,4 @@ RUN (cd /root/sites/testbuild/var/images && curl --user admn2410:PaulB0wl3s -o 6
 # -------------------------------------------------------------------------
 
 RUN (cd /root/sites/testbuild/ && . bin/activate && py.test /root/sites/testbuild/tests/)
-
-
+EXPOSE 8080
