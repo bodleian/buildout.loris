@@ -106,5 +106,4 @@ RUN ( chown -R www-data:www-data /root/sites/testbuild/ && cd /root/sites/testbu
 # ---------------------------    RUN VALIDATOR   --------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/parts/iiif_validator-0.9.0/iiif_va
-lidator && ./validate.py -s localhost:8080 -p prefix -i PalaisDuLouvre --version=2.0 -v)
+RUN (cd /root/sites/testbuild/parts/iiif_validator-0.9.0/iiif_validator && ./validate.py -s localhost:8080 -p prefix -i PalaisDuLouvre --version=2.0 -v)
