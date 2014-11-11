@@ -100,7 +100,7 @@ RUN (apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /root/sites/t
 
 WORKDIR /root/sites/testbuild
 EXPOSE 8080
-CMD["iipctl start", "/bin"]
+RUN (cd /root/sites/testbuild/bin/ && ./iipctl start)
 
 # -------------------------------------------------------------------------
 # ---------------------------    RUN VALIDATOR   --------------------------
