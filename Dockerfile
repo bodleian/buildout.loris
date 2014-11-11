@@ -91,7 +91,7 @@ RUN (cd /root/sites/testbuild/ && . bin/activate && py.test /root/sites/testbuil
 # ---------------------------  INSTALL VALIDATOR --------------------------
 # -------------------------------------------------------------------------
 
-RUN (mkdir -p /root/sites/testbuild/parts/validator && cd /root/sites/testbuild/parts/validator && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif_validator/iiif_validator-0.9.0.tar.gz && tar zxfv iiif_validator-0.9.0.tar.gz)
+RUN (mkdir -p /root/sites/testbuild/parts/validator && cd /root/sites/testbuild/parts && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif_validator/iiif_validator-0.9.0.tar.gz && tar zxfv iiif_validator-0.9.0.tar.gz)
 RUN (apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /root/sites/testbuild && . bin/activate && pip install bottle && pip install python-magic && pip install lxml)
 
 # -------------------------------------------------------------------------
@@ -106,4 +106,5 @@ CMD["iipctl start", "/bin"]
 # ---------------------------    RUN VALIDATOR   --------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/parts/validator && ./validate.py -s localhost:8080 -p prefix -i PalaisDuLouvre --version=2.0 -v)
+RUN (cd /root/sites/testbuild/parts/iiif_validator-0.9.0/iiif_va
+lidator && ./validate.py -s localhost:8080 -p prefix -i PalaisDuLouvre --version=2.0 -v)
