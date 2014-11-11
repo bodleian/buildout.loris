@@ -91,7 +91,8 @@ RUN (cd /root/sites/testbuild/ && . bin/activate && py.test /root/sites/testbuil
 # ---------------------------  INSTALL VALIDATOR --------------------------
 # -------------------------------------------------------------------------
 
-RUN (mkdir -p /root/sites/testbuild/parts/validator && cd /root/sites/testbuild/parts/validator && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif_validator/iiif_validator-0.9.0.tar.gz && tar zxfv iiif_validator-0.9.0.tar.gz && sudo apt-get install libmagic-dev && pip install bottle python-magic lxml)
+RUN (mkdir -p /root/sites/testbuild/parts/validator && cd /root/sites/testbuild/parts/validator && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif_validator/iiif_validator-0.9.0.tar.gz && tar zxfv iiif_validator-0.9.0.tar.gz)
+RUN (apt-get -y install libmagic-dev && cd /root/sites/testbuild && . bin/activate && pip install bottle && pip install python-magic && pip install lxml)
 
 # -------------------------------------------------------------------------
 # ---------------------------    START SERVER    --------------------------
