@@ -37,7 +37,7 @@ RUN mkdir -p /root/Downloads
 
 # change Kakadu_v<number>.zip for different versions: 64, 72, 74, etc.
 
-RUN (cd /root/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip && unzip -d kakadu Kakadu_v74.zip)
+#RUN (cd /root/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip && unzip -d kakadu Kakadu_v74.zip)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL PYTHON ------------------------------
@@ -67,32 +67,32 @@ RUN (cd /root/sites/testbuild && /root/python/2.7.6/bin/virtualenv . && . bin/ac
 # --------------------------- INSTALL LORIS -------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/src/loris && python setup.py install)
+#RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/src/loris && python setup.py install)
 
 # -------------------------------------------------------------------------
 # --------------------------- SHORTLINKS ----------------------------------
 # -------------------------------------------------------------------------
 
-RUN (ln -s /usr/include/freetype2 freetype && ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/)
+#RUN (ln -s /usr/include/freetype2 freetype && ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/)
 
 # -------------------------------------------------------------------------
 # --------------------------- GET TEST IMAGE ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/var/images && curl --user admn2410:PaulB0wl3s -o 67352ccc-d1b0-11e1-89ae-279075081939.jp2 http://databank.ora.ox.ac.uk/dmt/datasets/Images/67352ccc-d1b0-11e1-89ae-279075081939.jp2)
+#RUN (cd /root/sites/testbuild/var/images && curl --user admn2410:PaulB0wl3s -o 67352ccc-d1b0-11e1-89ae-279075081939.jp2 http://databank.ora.ox.ac.uk/dmt/datasets/Images/67352ccc-d1b0-11e1-89ae-279075081939.jp2)
 
 # -------------------------------------------------------------------------
 # --------------------------- RUN TEST FRAMEWORK --------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/ && . bin/activate && py.test /root/sites/testbuild/tests/)
+#RUN (cd /root/sites/testbuild/ && . bin/activate && py.test /root/sites/testbuild/tests/)
 
 # -------------------------------------------------------------------------
 # ---------------------------  INSTALL VALIDATOR --------------------------
 # -------------------------------------------------------------------------
 
 RUN (mkdir -p /root/sites/testbuild/parts/validator && cd /root/sites/testbuild/parts/validator && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif_validator/iiif_validator-0.9.0.tar.gz && tar zxfv iiif_validator-0.9.0.tar.gz)
-RUN (apt-get -y install libmagic-dev && cd /root/sites/testbuild && . bin/activate && pip install bottle && pip install python-magic && pip install lxml)
+RUN (apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /root/sites/testbuild && . bin/activate && pip install bottle && pip install python-magic && pip install lxml)
 
 # -------------------------------------------------------------------------
 # ---------------------------    START SERVER    --------------------------
