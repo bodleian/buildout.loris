@@ -61,7 +61,7 @@ RUN /root/python/2.7.6/bin/pip install virtualenv
 # --------------------------- BUILDOUT CACHE ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (mkdir /root/.buildout && cd /root/.buildout && mkdir eggs && mkdir downloads && mkdir extends && echo "[buildout]eggs-directory = /root/.buildout/eggs download-cache = /root/.buildout/downloads extends-cache = /root/.buildout/extends" >> /root/.buildout/default.cfg)
+RUN (mkdir /root/.buildout && cd /root/.buildout && mkdir eggs && mkdir downloads && mkdir extends && echo "[buildout]\neggs-directory = /root/.buildout/eggs\ndownload-cache = /root/.buildout/downloads\nextends-cache = /root/.buildout/extends" >> /root/.buildout/default.cfg)
 
 # -------------------------------------------------------------------------
 # --------------------------- RUN BUILDOUT AND INSTALL EGGS ---------------
