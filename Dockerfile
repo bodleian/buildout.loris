@@ -112,4 +112,4 @@ RUN ( chown -R www-data:www-data /root/sites/testbuild/ && cd /root/sites/testbu
 # ---------------------------    RUN VALIDATOR   --------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/parts/iiif-validator-0.9.1/ && ./iiif-validate.py -s localhost:8080 -p -i 67352ccc-d1b0-11e1-89ae-279075081939 --version=2.0 -v)
+RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/parts/iiif-validator-0.9.1/ && ./iiif-validate.py -s localhost:8080 -p full -i 67352ccc-d1b0-11e1-89ae-279075081939 --version=2.0 -v)
