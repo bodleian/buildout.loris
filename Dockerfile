@@ -58,6 +58,12 @@ RUN /root/python/2.7.6/bin/easy_install pip
 RUN /root/python/2.7.6/bin/pip install virtualenv
 
 # -------------------------------------------------------------------------
+# --------------------------- BUILDOUT CACHE ------------------------------
+# -------------------------------------------------------------------------
+
+RUN (mkdir ~/.buildout && cd ~/.buildout && mkdir eggs && mkdir downloads && mkdir extends && echo"[buildout]eggs-directory = /root/.buildout/eggsdownload-cache = /root/.buildout/downloadsextends-cache = /root/.buildout/extends" >> ~/.buildout/default.cfg)
+
+# -------------------------------------------------------------------------
 # --------------------------- RUN BUILDOUT AND INSTALL EGGS ---------------
 # -------------------------------------------------------------------------
 
@@ -106,4 +112,4 @@ RUN ( chown -R www-data:www-data /root/sites/testbuild/ && cd /root/sites/testbu
 # ---------------------------    RUN VALIDATOR   --------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/parts/iiif_validator-0.9.0/iiif_validator && ./validate.py -s localhost:8080 -p prefix -i PalaisDuLouvre --version=2.0 -v)
+RUN (cd /root/sites/testbuild/parts/iiif_validator-0.9.0/ && ./iiif-validate.py -s localhost:8080 -p -i 67352ccc-d1b0-11e1-89ae-279075081939 --version=2.0 -v)
