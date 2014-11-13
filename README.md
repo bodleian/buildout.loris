@@ -53,7 +53,7 @@ Checkout the buildout
 su - bodl-loris-svc
 mkdir -p ~/sites/bodl-loris-svc
 cd ~/sites/bodl-loris-svc
-git clone gitlab@source.bodleian.ox.ac.uk:loris/buildout.loris.git ./
+git clone https://github.com/BDLSS/buildout.loris.git ./
 ```
 Setup server (Debian/Ubuntu)
 ----------------------------
