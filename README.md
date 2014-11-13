@@ -131,9 +131,15 @@ externalIP = <your server external IP address>
 Upload Kakadu source to server for compilation
 ----------------------------------------------
 
-With no top layer directory (this buildout is designed for Kakadu versions 6.4 to 7.4).
+You can retrieve the source from databank (you will need a user account for databank):
 
-On your loris server:
+```bash
+cd ~/Downloads
+curl --user <username>:<password> -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip 
+unzip -d kakadu Kakadu_v74.zip
+```
+
+Alternatively, on your loris server:
 
 ```bash
 mkdir ~/Downloads/kakadu
@@ -143,13 +149,6 @@ From wherever your source files reside:
 
 ```bash
 scp -r <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads/kakadu
-```
-
-Or you can retrieve the source from databank (you will need a user account for databank):
-
-```bash
-curl --user <username>:<password> -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip 
-unzip -d kakadu Kakadu_v74.zip
 ```
 
 Buildout will compile the source and distribute the libraries and applications required (namely the shared object library and kdu_expand).
