@@ -145,6 +145,13 @@ From wherever your source files reside:
 scp -r <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads/kakadu
 ```
 
+Or you can retrieve the source from databank (you will need a user account for databank):
+
+```bash
+curl --user <username>:<password> -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip 
+unzip -d kakadu Kakadu_v74.zip
+```
+
 Buildout will compile the source and distribute the libraries and applications required (namely the shared object library and kdu_expand).
 
 Create a virtualenv and run the buildout
