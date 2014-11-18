@@ -155,14 +155,16 @@ Buildout will compile the source and distribute the libraries and applications r
 
 Create a virtualenv and run the buildout
 ----------------------------------------
+Add _docker to development.cfg if running in docker environment (or remove [...] from code below).
+
 ```bash
-cd ~/sites/bodl-loris-svc
+cd ~/sites/bodl-loris-srv
 ~/python/2.7.6/bin/virtualenv .
-source bin/activate
+. bin/activate
 pip install zc.buildout
 pip install distribute
 buildout init
-buildout -c development.cfg
+buildout -c development[_docker].cfg
 ```
 
 Install eggs (temporary)
