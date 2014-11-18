@@ -233,13 +233,10 @@ cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl
 Start Apache
 ------------
 
-From within the virtual environment:
-
 ```bash
-su - bodl-loris-svc
-cd ~/sites/bodl-loris-svc
-. bin/activate
-/home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
+su - <sudo user>
+sudo chmod a+x /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl
+sudo /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
 ```
 
 Browse the following links to test:
