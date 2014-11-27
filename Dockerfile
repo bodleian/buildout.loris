@@ -13,23 +13,24 @@ FROM ubuntu:14.04
 RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
 
 # -------------------------------------------------------------------------
-# --------------------------- CREATE APP DIR ------------------------------
+# ------------------------- CREATE APP USER/DIR ---------------------------
 # -------------------------------------------------------------------------
 
-RUN mkdir -p /root/sites/testbuild
+RUN (adduser --disabled-password --gecos '' bodl-loris-srv && adduser bodl-loris-srv sudo && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && su - bodl-loris-srv && mkdir -p sites/bodl-loris-srv)
+
 
 # -------------------------------------------------------------------------
 # --------------------------- COPY SOURCE INTO CONTAINER ------------------
 # -------------------------------------------------------------------------
 
-COPY / /root/sites/testbuild/
+COPY / /home/bodl-loris-srv/sites/bodl-loris-srv/
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL REQS --------------------------------
 # -------------------------------------------------------------------------
 
-RUN apt-get -y install $(cat /root/sites/testbuild/ubuntu_requirements_ubuntu14)
-RUN mkdir -p /root/Downloads
+RUN apt-get -y install $(cat /home/bodl-loris-srv/sites/bodl-loris-srv/ubuntu_requirements_ubuntu14)
+RUN mkdir -p /home/bodl-loris-srv/Downloads
 
 # -------------------------------------------------------------------------
 # --------------------------- GET KAKADU ----------------------------------
@@ -37,14 +38,14 @@ RUN mkdir -p /root/Downloads
 
 # change Kakadu_v<number>.zip for different versions: 64, 72, 74, etc.
 
-RUN (cd /root/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip && unzip -d kakadu Kakadu_v74.zip)
+RUN (cd /home/bodl-loris-srv/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip && unzip -d kakadu Kakadu_v74.zip)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL PYTHON ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /root/Downloads/Python-2.7.6)
-RUN /root/Downloads/Python-2.7.6/configure --prefix=/root/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/root/python/2.7.6/lib"
+RUN (cd /home/bodl-loris-srv/Downloads && wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate && tar zxfv Python-2.7.6.tgz && cd /home/bodl-loris-srv/Downloads/Python-2.7.6)
+RUN /home/bodl-loris-srv/Downloads/Python-2.7.6/configure --prefix=/home/bodl-loris-srv/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/home/bodl-loris-srv/python/2.7.6/lib"
 RUN make
 RUN make install
 
@@ -52,28 +53,28 @@ RUN make install
 # --------------------------- BUILDOUT SETUP ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/Downloads && wget https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz && tar zxfv distribute-0.6.49.tar.gz) 
-RUN /root/python/2.7.6/bin/python /root/Downloads/distribute-0.6.49/distribute_setup.py
-RUN /root/python/2.7.6/bin/easy_install pip
-RUN /root/python/2.7.6/bin/pip install virtualenv
+RUN (cd /home/bodl-loris-srv/Downloads && wget https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz && tar zxfv distribute-0.6.49.tar.gz) 
+RUN /home/bodl-loris-srv/python/2.7.6/bin/python /home/bodl-loris-srv/Downloads/distribute-0.6.49/distribute_setup.py
+RUN /home/bodl-loris-srv/python/2.7.6/bin/easy_install pip
+RUN /home/bodl-loris-srv/python/2.7.6/bin/pip install virtualenv
 
 # -------------------------------------------------------------------------
 # --------------------------- BUILDOUT CACHE ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (mkdir /root/.buildout && cd /root/.buildout && mkdir eggs && mkdir downloads && mkdir extends && echo "[buildout]\neggs-directory = /root/.buildout/eggs\ndownload-cache = /root/.buildout/downloads\nextends-cache = /root/.buildout/extends" >> /root/.buildout/default.cfg)
+RUN (mkdir /home/bodl-loris-srv/.buildout && cd /home/bodl-loris-srv/.buildout && mkdir eggs && mkdir downloads && mkdir extends && echo "[buildout]\neggs-directory = /home/bodl-loris-srv/.buildout/eggs\ndownload-cache = /home/bodl-loris-srv/.buildout/downloads\nextends-cache = /home/bodl-loris-srv/.buildout/extends" >> /home/bodl-loris-srv/.buildout/default.cfg)
 
 # -------------------------------------------------------------------------
 # --------------------------- RUN BUILDOUT AND INSTALL EGGS ---------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild && /root/python/2.7.6/bin/virtualenv . && . bin/activate && pip install zc.buildout && pip install distribute && buildout init && buildout -c development_docker.cfg && pip install pillow==2.5.0 && pip install werkzeug==0.9.6 && pip install configobj==5.0.5 && pip install pytest==2.6.2)
+RUN (cd /home/bodl-loris-srv/sites/testbuild && /home/bodl-loris-srv/python/2.7.6/bin/virtualenv . && . bin/activate && pip install zc.buildout && pip install distribute && buildout init && buildout -c development_docker.cfg && pip install pillow==2.5.0 && pip install werkzeug==0.9.6 && pip install configobj==5.0.5 && pip install pytest==2.6.2)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL LORIS -------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/src/loris && python setup.py install)
+RUN (cd /home/bodl-loris-srv/sites/bodl-loris-srv/ && . bin/activate && cd /home/bodl-loris-srv/sites/bodl-loris-srv/src/loris && python setup.py install)
 
 # -------------------------------------------------------------------------
 # --------------------------- SHORTLINKS ----------------------------------
@@ -85,30 +86,27 @@ RUN (ln -s /usr/include/freetype2 freetype && ln -s /usr/lib/`uname -i`-linux-gn
 # --------------------------- GET TEST IMAGE ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/var/images && curl --user admn2410:PaulB0wl3s -o 67352ccc-d1b0-11e1-89ae-279075081939.jp2 http://databank.ora.ox.ac.uk/dmt/datasets/Images/67352ccc-d1b0-11e1-89ae-279075081939.jp2)
+RUN (cd /home/bodl-loris-srv/sites/bodl-loris-srv/var/images && curl --user admn2410:PaulB0wl3s -o 67352ccc-d1b0-11e1-89ae-279075081939.jp2 http://databank.ora.ox.ac.uk/dmt/datasets/Images/67352ccc-d1b0-11e1-89ae-279075081939.jp2)
 
 # -------------------------------------------------------------------------
 # --------------------------- RUN TEST FRAMEWORK --------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /root/sites/testbuild/ && . bin/activate && py.test /root/sites/testbuild/tests/)
+RUN (cd /home/bodl-loris-srv/sites/bodl-loris-srv/ && . bin/activate && py.test /home/bodl-loris-srv/sites/bodl-loris-srv/tests/)
 
 # -------------------------------------------------------------------------
 # ---------------------------  INSTALL VALIDATOR --------------------------
 # -------------------------------------------------------------------------
 
-RUN (mkdir -p /root/sites/testbuild/parts/validator && cd /root/sites/testbuild/parts && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif-validator/iiif-validator-0.9.1.tar.gz && tar zxfv iiif-validator-0.9.1.tar.gz)
-RUN (apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /root/sites/testbuild && . bin/activate && pip install bottle && pip install python-magic && pip install lxml)
+RUN (mkdir -p /home/bodl-loris-srv/sites/bodl-loris-srv/parts/validator && cd /home/bodl-loris-srv/sites/bodl-loris-srv/parts && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif-validator/iiif-validator-0.9.1.tar.gz && tar zxfv iiif-validator-0.9.1.tar.gz)
+RUN (apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /home/bodl-loris-srv/sites/bodl-loris-srv && . bin/activate && pip install bottle && pip install python-magic && pip install lxml && pip install Pillow)
 
 # -------------------------------------------------------------------------
-# ---------------------------    START SERVER    --------------------------
+# -------------------  START SERVER, RUN VALIDATOR   ----------------------
 # -------------------------------------------------------------------------
 
-WORKDIR /root/sites/testbuild
+#validator needs to run in same intermediate container as the apache start
+
+WORKDIR /home/bodl-loris-srv/sites/bodl-loris-srv
 EXPOSE 8080
-RUN ( chown -R www-data:www-data /root/sites/testbuild/ && cd /root/sites/testbuild/bin/ && chmod a+x lorisctl && ./lorisctl start)
-# -------------------------------------------------------------------------
-# ---------------------------    RUN VALIDATOR   --------------------------
-# -------------------------------------------------------------------------
-
-RUN (cd /root/sites/testbuild/ && . bin/activate && cd /root/sites/testbuild/parts/iiif-validator-0.9.1/ && ./iiif-validate.py -s localhost:8080 -p full -i 67352ccc-d1b0-11e1-89ae-279075081939 --version=2.0 -v)
+RUN (chown -R www-data:www-data /home/bodl-loris-srv/sites/bodl-loris-srv/src && cd /home/bodl-loris-srv/sites/bodl-loris-srv/bin/ && chmod +x lorisctl && sleep 2 && ./lorisctl start && cd /home/bodl-loris-srv/sites/bodl-loris-srv/ && . bin/activate && cd /home/bodl-loris-srv/sites/bodl-loris-srv/parts/iiif-validator-0.9.1/ && ./iiif-validate.py -s 127.0.0.1:8080 -p '' -i /home/bodl-loris-srv/sites/bodl-loris-srv/var/images/67352ccc-d1b0-11e1-89ae-279075081939.jp2 --version=2.0 -v)
