@@ -68,7 +68,7 @@ RUN (mkdir /home/bodl-loris-srv/.buildout && cd /home/bodl-loris-srv/.buildout &
 # --------------------------- RUN BUILDOUT AND INSTALL EGGS ---------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bodl-loris-srv/sites/testbuild && /home/bodl-loris-srv/python/2.7.6/bin/virtualenv . && . bin/activate && pip install zc.buildout && pip install distribute && buildout init && buildout -c development_docker.cfg && pip install pillow==2.5.0 && pip install werkzeug==0.9.6 && pip install configobj==5.0.5 && pip install pytest==2.6.2)
+RUN (cd /home/bodl-loris-srv/sites/bodl-loris-srv && /home/bodl-loris-srv/python/2.7.6/bin/virtualenv . && . bin/activate && pip install zc.buildout && pip install distribute && buildout init && buildout -c development_docker.cfg && pip install pillow==2.5.0 && pip install werkzeug==0.9.6 && pip install configobj==5.0.5 && pip install pytest==2.6.2)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL LORIS -------------------------------
