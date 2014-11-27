@@ -74,7 +74,7 @@ RUN (cd /home/bodl-loris-srv/sites/bodl-loris-srv && /home/bodl-loris-srv/python
 # --------------------------- INSTALL LORIS -------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bodl-loris-srv/sites/bodl-loris-srv/ && . bin/activate && cd /home/bodl-loris-srv/sites/bodl-loris-srv/src/loris && python setup.py install)
+RUN (cd /home/bodl-loris-srv/sites/bodl-loris-srv/ && . bin/activate && cd /home/bodl-loris-srv/sites/bodl-loris-srv/parts/loris && python setup.py install)
 
 # -------------------------------------------------------------------------
 # --------------------------- SHORTLINKS ----------------------------------
