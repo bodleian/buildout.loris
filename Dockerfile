@@ -17,13 +17,6 @@ RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgr
 # -------------------------------------------------------------------------
 
 RUN (adduser --disabled-password --gecos '' bodl-loris-srv && adduser bodl-loris-srv sudo && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && su - bodl-loris-srv && mkdir -p sites/bodl-loris-srv)
-USER bodl-loris-srv
-
-# -------------------------------------------------------------------------
-# --------------------------- COPY SOURCE INTO CONTAINER ------------------
-# -------------------------------------------------------------------------
-
-COPY / /home/bodl-loris-srv/sites/bodl-loris-srv/
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL REQS --------------------------------
@@ -31,6 +24,13 @@ COPY / /home/bodl-loris-srv/sites/bodl-loris-srv/
 
 RUN apt-get -y install $(cat /home/bodl-loris-srv/sites/bodl-loris-srv/ubuntu_requirements_ubuntu14)
 RUN mkdir -p /home/bodl-loris-srv/Downloads
+
+# -------------------------------------------------------------------------
+# --------------------------- COPY SOURCE INTO CONTAINER ------------------
+# -------------------------------------------------------------------------
+
+USER bodl-loris-srv
+COPY / /home/bodl-loris-srv/sites/bodl-loris-srv/
 
 # -------------------------------------------------------------------------
 # --------------------------- GET KAKADU ----------------------------------
