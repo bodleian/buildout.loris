@@ -23,7 +23,7 @@ RUN (adduser --disabled-password --gecos '' bodl-loris-srv && adduser bodl-loris
 # -------------------------------------------------------------------------
 
 COPY / /home/bodl-loris-srv/sites/bodl-loris-srv/
-RUN -R chown bodl-loris-srv:bodl-loris-srv /home/bodl-loris-srv
+RUN chown -R bodl-loris-srv:bodl-loris-srv /home/bodl-loris-srv
 USER bodl-loris-srv
 
 # -------------------------------------------------------------------------
