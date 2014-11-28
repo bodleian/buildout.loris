@@ -17,7 +17,7 @@ RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgr
 # -------------------------------------------------------------------------
 
 RUN (adduser --disabled-password --gecos '' bodl-loris-srv && adduser bodl-loris-srv sudo && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && su - bodl-loris-srv && mkdir -p sites/bodl-loris-srv)
-
+USER bodl-loris-srv
 
 # -------------------------------------------------------------------------
 # --------------------------- COPY SOURCE INTO CONTAINER ------------------
