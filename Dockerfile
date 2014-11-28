@@ -30,7 +30,6 @@ RUN chown -R bodl-loris-srv:bodl-loris-srv /home/bodl-loris-srv
 # -------------------------------------------------------------------------
 
 RUN apt-get -y install $(cat /home/bodl-loris-srv/sites/bodl-loris-srv/ubuntu_requirements_ubuntu14)
-USER bodl-loris-srv
 RUN mkdir -p /home/bodl-loris-srv/Downloads
 
 # -------------------------------------------------------------------------
