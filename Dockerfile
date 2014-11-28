@@ -61,7 +61,7 @@ RUN /home/bodl-loris-srv/python/2.7.6/bin/pip install virtualenv
 # --------------------------- BUILDOUT CACHE ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (mkdir /home/bodl-loris-srv/.buildout && cd /home/bodl-loris-srv/.buildout && mkdir eggs && mkdir downloads && mkdir extends && echo "[buildout] eggs-directory = /home/bodl-loris-srv/.buildout/eggs download-cache = /home/bodl-loris-srv/.buildout/downloads extends-cache = /home/bodl-loris-srv/.buildout/extends" >> /home/bodl-loris-srv/.buildout/default.cfg)
+RUN (mkdir /home/bodl-loris-srv/.buildout && cd /home/bodl-loris-srv/.buildout && mkdir eggs && mkdir downloads && mkdir extends && (echo "[buildout] eggs-directory = /home/bodl-loris-srv/.buildout/eggs" && echo "download-cache = /home/bodl-loris-srv/.buildout/downloads" && echo "extends-cache = /home/bodl-loris-srv/.buildout/extends" >> /home/bodl-loris-srv/.buildout/default.cfg))
 
 # -------------------------------------------------------------------------
 # --------------------------- RUN BUILDOUT AND INSTALL EGGS ---------------
