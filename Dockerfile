@@ -24,13 +24,13 @@ RUN (adduser --disabled-password --gecos '' bodl-loris-srv && adduser bodl-loris
 
 COPY / /home/bodl-loris-srv/sites/bodl-loris-srv/
 RUN chown -R bodl-loris-srv:bodl-loris-srv /home/bodl-loris-srv
-USER bodl-loris-srv
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL REQS --------------------------------
 # -------------------------------------------------------------------------
 
 RUN apt-get -y install $(cat /home/bodl-loris-srv/sites/bodl-loris-srv/ubuntu_requirements_ubuntu14)
+USER bodl-loris-srv
 RUN mkdir -p /home/bodl-loris-srv/Downloads
 
 # -------------------------------------------------------------------------
