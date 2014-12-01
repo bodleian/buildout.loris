@@ -175,7 +175,7 @@ Install Loris
 
 ```bash
 
-cd /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris
+cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts/loris
 python setup.py install
 ```
 
