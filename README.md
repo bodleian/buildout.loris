@@ -66,13 +66,6 @@ sudo apt-get install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requ
 su - bodl-loris-svc
 ```
 
-Ubuntu 12 is set as default in the ``.travis.yml`` as follows:
-
-```bash
-install:
-- sudo apt-get install $(cat ubuntu_requirements_ubuntu12)
-```
-
 Setup server (RHEL>=6)
 ----------------------------
 
@@ -158,7 +151,7 @@ Create a virtualenv and run the buildout
 Add _docker to development.cfg if running in docker environment (or remove [...] from code below).
 
 ```bash
-cd ~/sites/bodl-loris-srv
+cd ~/sites/bodl-loris-svc
 ~/python/2.7.6/bin/virtualenv .
 . bin/activate
 pip install zc.buildout
