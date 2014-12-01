@@ -4,9 +4,9 @@
 
 EX_NOUSER = 67
 EX_TEMPFAIL = 75
-BIN_DP = '/usr/local/bin'
-ETC_DP = '/etc/loris'
-LIB_DP = '/usr/local/lib'
+BIN_DP = '${buildout:directory}/parts/loris/bin'
+ETC_DP = '${buildout:directory}/parts/loris/etc'
+LIB_DP = '${buildout:directory}/parts/loris/lib'
 
 from sys import stderr, stdout, exit
 from grp import getgrnam
