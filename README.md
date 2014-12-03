@@ -99,8 +99,8 @@ tar zxfv distribute-0.6.49.tar.gz
 Setup the buildout cache
 ------------------------
 ```bash
-mkdir ~/.buildout
-cd ~/.buildout
+mkdir /home/bodl-loris-svc/.buildout
+cd /home/bodl-loris-svc/.buildout
 mkdir eggs
 mkdir downloads
 mkdir extends
