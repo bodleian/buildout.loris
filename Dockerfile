@@ -67,7 +67,7 @@ RUN (mkdir /home/bodl-loris-svc/.buildout && cd /home/bodl-loris-svc/.buildout &
 # --------------------------- RUN BUILDOUT AND INSTALL EGGS ---------------
 # -------------------------------------------------------------------------
 
-RUN chown -R bodl-loris-svc:bodl-loris-svc /home/bodl-loris-svc
+RUN (chown -R bodl-loris-svc:bodl-loris-svc /home/bodl-loris-svc && chmod -R 777 /home/bodl-loris-svc/.buildout/*)
 RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc && /home/bodl-loris-svc/python/2.7.6/bin/virtualenv . && . bin/activate && pip install zc.buildout && pip install distribute && buildout init && buildout -c development_docker.cfg && pip install pillow==2.5.0 && pip install werkzeug==0.9.6 && pip install configobj==5.0.5 && pip install pytest==2.6.2)
 
 # -------------------------------------------------------------------------
