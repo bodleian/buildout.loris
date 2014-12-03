@@ -109,8 +109,8 @@ You can retrieve the source from databank (you will need a user account for data
 
 ```bash
 cd ~/Downloads
-curl --user <username>:<password> -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip 
-unzip -d kakadu Kakadu_v74.zip
+curl --user <username>:<password> -o Kakadu_v72.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v72.zip 
+unzip -d kakadu Kakadu_v72.zip
 ```
 
 Buildout will compile the source and distribute the libraries and applications required (namely the shared object library and kdu_expand).
