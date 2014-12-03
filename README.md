@@ -3,6 +3,7 @@ Installation
 
 Travis only offers Ubuntu 12.04 builds. This Loris build is intended for Ubuntu 14.0. However, it can be installed on 12.0 by following the instructions given in section "Setup server (Debian/Ubuntu)".
 
+Docker
 https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
 
 Create user "bodl-loris-svc"
@@ -25,22 +26,12 @@ Copy and paste your key into gitlab by choosing My Profile (the grey person grap
 cat ~/.ssh/id_rsa.pub
 ```
 
-Install and configure Git (Ubuntu)
-----------------------------------
+Install and configure Git 
+-------------------------
+
 ```bash
 su - <sudo user>
 sudo apt-get install git
-```
-```bash
-git config --global user.email "my@address.com"
-git config --global user.name "name in quotes"
-```
-Install and configure Git (RHEL>=6)
------------------------------------
-```bash
-su
-yum install git
-exit
 ```
 ```bash
 git config --global user.email "my@address.com"
@@ -55,8 +46,8 @@ mkdir -p ~/sites/bodl-loris-svc
 cd ~/sites/bodl-loris-svc
 git clone https://github.com/BDLSS/buildout.loris.git ./
 ```
-Setup server (Debian/Ubuntu)
-----------------------------
+Setup server
+------------
 
 Append ``_ubuntu12`` or ``_ubuntu14`` to the ubuntu_requirements file accordingly.
 
@@ -64,16 +55,6 @@ Append ``_ubuntu12`` or ``_ubuntu14`` to the ubuntu_requirements file accordingl
 su - <sudo user>
 sudo apt-get install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements[_ubuntu12 or _ubuntu14])
 su - bodl-loris-svc
-```
-
-Setup server (RHEL>=6)
-----------------------------
-
-```bash
-su - <sudo user>
-sudo cp /home/bodl-loris-svc/sites/bodl-loris-svc/redhat_requirements ~
-sudo yum install $(cat redhat_requirements)
-exit
 ```
 
 Install Python
@@ -130,18 +111,6 @@ You can retrieve the source from databank (you will need a user account for data
 cd ~/Downloads
 curl --user <username>:<password> -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip 
 unzip -d kakadu Kakadu_v74.zip
-```
-
-Alternatively, on your loris server:
-
-```bash
-mkdir ~/Downloads/kakadu
-```
-
-From wherever your source files reside:
-
-```bash
-scp -r <kakadu source location>/* bodl-loris-svc@<your loris server>:/home/bodl-loris-svc/Downloads/kakadu
 ```
 
 Buildout will compile the source and distribute the libraries and applications required (namely the shared object library and kdu_expand).
@@ -250,16 +219,6 @@ sudo crontab /home/bodl-loris-svc/sites/bodl-loris-svc/bin/cron.txt
 su - bodl-loris-svc
 ```
 
-
-Startup scripts and cron jobs (RHEL)
-------------------------------------
-
-Add the following in ```/etc/sudoers```. This will allow the cron reboot directive to run sudo commands in ```bin/lorisctl```. This will reboot apache.
-
-```bash
-Defaults:<sudo user as given in development/production.cfg> !requiretty
-```
-
 Startup scripts and cron jobs
 -----------------------------
 
@@ -279,18 +238,8 @@ It will stop/start/restart Loris. It runs under a @reboot directive in the sudo 
 Continuous Integration
 ----------------------
 
-.travis.yml and jenkins.sh files are made available for CI configuration.
-
-Currently, Travis builds are available at:
-
-https://travis-ci.org/BDLSS
-
-Builds are run with every GIT commit (after a push). This can be skipped by entering ``[skip ci]`` in the commit message.
-
-Loris has an issue with Travis as the native version of Python compiled on the Travis VM isn't configured with ``./configure --prefix=$HOME/python/2.7.6 --enable-unicode=ucs4 --enable-shared LDFLAGS="-Wl,-rpath=/home/bodl-loris-svc/python/2.7.6/lib"``.
-
-The main problem appears to be the ``enable-shared`` setting, although the ``enable-unicode=ucs4`` has also caused other problems in the past.
-
+Docker
+https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
 
 Functional and Unit Testing
 ---------------------------
