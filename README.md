@@ -1,7 +1,7 @@
 Installation
 ============
 
-Travis only offers Ubuntu 12.04 builds. This Loris build is intended for Ubuntu 14.0. However, it can be installed on 12.0 by following the instructions given in section "Setup server (Debian/Ubuntu)".
+This Loris build is intended for Ubuntu 14.0 (currently). 
 
 Docker
 https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
@@ -49,11 +49,9 @@ git clone https://github.com/BDLSS/buildout.loris.git ./
 Setup server
 ------------
 
-Append ``_ubuntu12`` or ``_ubuntu14`` to the ubuntu_requirements file accordingly.
-
 ```bash
 su - <sudo user>
-sudo apt-get install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements[_ubuntu12 or _ubuntu14])
+sudo apt-get install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements)
 su - bodl-loris-svc
 ```
 
