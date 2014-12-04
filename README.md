@@ -17,6 +17,8 @@ https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
 
 If any of the 21 IIIF validation tests fail, Docker will exit with a non-zero result. This means the Docker build will fail and read "Error".
 
+More about IIIF validation can be found here: http://iiif-test.stanford.edu/
+
 Functional and Unit Testing
 ---------------------------
 
