@@ -196,11 +196,10 @@ sudo /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
 ```
 
 Browse the following links to test:
-
-http://{your_server}/loris/01/02/0001.jp2/full/full/0/default.jpg
-http://{your_server}/loris/01/03/0001.jpg/full/full/0/bitonal.jpg
-http://{your_server}/loris/01/04/0001.tif/full/full/0/color.jpg
-
+```bash
+http://{your_server, e.g. localhost:8080}/loris/67352ccc-d1b0-11e1-89ae-279075081939.jp2/full/full/0/default.jpg
+http://{your_server, e.g. localhost:8080}/loris/67352ccc-d1b0-11e1-89ae-279075081939.jp2/info.json
+```
 
 Setup the reboot script in the sudo crontab
 -------------------------------------------
