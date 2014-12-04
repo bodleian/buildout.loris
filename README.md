@@ -1,12 +1,7 @@
 Introduction
 ============
 
-This Loris build is intended for Ubuntu 14.0, Loris 2.0.0-beta1 and Kakadu 7.2. These versions can be changed, see ```development[_docker].cfg``` and ```Dockerfile```. 
-
-BDLSS Docker CI
-https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
-
-Github Loris source https://github.com/pulibrary/loris
+This Loris build is intended for Ubuntu 14.0, Loris 2.0.0-beta1 (https://github.com/pulibrary/loris) and Kakadu 7.2. These versions can be changed, see ```development[_docker].cfg``` and ```Dockerfile```. 
 
 **Please note:** ```setup.py```, ```transforms.py``` and ```webapp.py``` from the loris source have hard coded paths and kakadu library names. These files have been brought in as templates in the ```conf/``` directory and will be deployed with the correct paths and filenames.
 
