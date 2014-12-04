@@ -16,7 +16,7 @@ If you are updating the loris source from 2.0.0-beta1 (you can do this by enteri
 Installation
 ============
 
-To deploy Loris on a server, follow these instructions. Whenever this GIT account is updated, Docker will run a test deployment at ```https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/```. Please see ***Continuous Integration** section below for more details.
+To deploy Loris on a server, follow these instructions. Whenever this GIT account is updated, Docker will run a test deployment at ```https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/```. Please see **Continuous Integration** section below for more details.
 
 Create user "bodl-loris-svc"
 ------------------
