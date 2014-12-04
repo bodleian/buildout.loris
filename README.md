@@ -1,7 +1,7 @@
 Installation
 ============
 
-This Loris build is intended for Ubuntu 14.0, Loris 2.0.0-beta1 and Kakadu 7.2. 
+This Loris build is intended for Ubuntu 14.0, Loris 2.0.0-beta1 and Kakadu 7.2. These versions can be changed, see ```development[_docker].cfg``` and ```Dockerfile```. 
 
 BDLSS Docker CI
 https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
