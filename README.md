@@ -126,7 +126,7 @@ cd ~/sites/bodl-loris-svc
 pip install zc.buildout
 pip install distribute
 buildout init
-buildout -c development[_docker].cfg
+buildout -c development.cfg
 ```
 
 Install eggs (temporary)
