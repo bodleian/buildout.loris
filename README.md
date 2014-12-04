@@ -13,7 +13,7 @@ Continuous Integration
 The Dockerfile will run the ```_docker.cfg``` version of development.cfg. This just ensures that users are named properly (the 'env' recipe does not work inside containers) and that the localhost is pointed to all IPs (as this cannot be dictated or predicted when creating a container).
 
 Docker
-https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
+https://registry.hub.docker.com/u/bdlss/buildout.loris/
 
 If any of the 21 IIIF validation tests fail, Docker will exit with a non-zero result. This means the Docker build will fail and read "Error".
 
