@@ -91,7 +91,7 @@ RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/var/images && curl --user admn
 # --------------------- INSTALL & RUN TEST FRAMEWORK ----------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && pip install py.test && py.test /home/bodl-loris-svc/sites/bodl-loris-svc/tests/)
+RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && pip install pytest && py.test /home/bodl-loris-svc/sites/bodl-loris-svc/tests/)
 
 # -------------------------------------------------------------------------
 # ---------------------------  INSTALL VALIDATOR --------------------------
