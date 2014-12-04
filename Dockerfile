@@ -28,7 +28,7 @@ COPY / /home/bodl-loris-svc/sites/bodl-loris-svc/
 # --------------------------- INSTALL REQS --------------------------------
 # -------------------------------------------------------------------------
 
-RUN apt-get -y install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements_ubuntu14)
+RUN apt-get -y install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements)
 RUN mkdir -p /home/bodl-loris-svc/Downloads
 
 # -------------------------------------------------------------------------
