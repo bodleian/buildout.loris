@@ -231,14 +231,11 @@ Continuous Integration
 Docker
 https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
 
+If any of the 21 IIIF validation tests fail, Docker will exit with a non-zero result. This means the Docker build will fail and read "Error".
+
 Functional and Unit Testing
 ---------------------------
 
-Pytest is executed in the .travis.yml file as follows:
-
-```bash
-script:
-- py.test tests/
-```
+Pytest is executed in the docker run.
 
 This runs all test scripts using the filename format of ``test_<something>.py`` in the ``tests/`` folder.
