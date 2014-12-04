@@ -12,6 +12,22 @@ Github Loris source https://github.com/pulibrary/loris
 
 If you are updating the loris source from 2.0.0-beta1 (you can do this by entering a new tag name inside the ```development[_docker].cfg``` file) you *may* need to update these files with their new versions. However, the buildout parameter tags ```${...}``` will need to be replaced.
 
+Continuous Integration
+----------------------
+
+The Dockerfile will run the ```_docker.cfg``` version of development.cfg. This just ensures that users are named properly (the 'env' recipe does not work inside containers) and that the localhost is pointed to all IPs (as this cannot be dictated or predicted when creating a container).
+
+Docker
+https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
+
+If any of the 21 IIIF validation tests fail, Docker will exit with a non-zero result. This means the Docker build will fail and read "Error".
+
+Functional and Unit Testing
+---------------------------
+
+Pytest is executed in the docker run.
+
+This runs all test scripts using the filename format of ``test_<something>.py`` in the ``tests/`` folder.
 
 Installation
 ============
@@ -236,19 +252,4 @@ It will stop/start/restart Loris. It runs under a @reboot directive in the sudo 
 @reboot /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start > /home/bodl-loris-svc/sites/bodl-loris-svc/var/log/reboot.log 2>&1
 ```
 
-Continuous Integration
-----------------------
 
-The Dockerfile will run the ```_docker.cfg``` version of development.cfg. This just ensures that users are named properly (the 'env' recipe does not work inside containers) and that the localhost is pointed to all IPs (as this cannot be dictated or predicted when creating a container).
-
-Docker
-https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
-
-If any of the 21 IIIF validation tests fail, Docker will exit with a non-zero result. This means the Docker build will fail and read "Error".
-
-Functional and Unit Testing
----------------------------
-
-Pytest is executed in the docker run.
-
-This runs all test scripts using the filename format of ``test_<something>.py`` in the ``tests/`` folder.
