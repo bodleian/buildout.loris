@@ -88,10 +88,10 @@ RUN (ln -s /usr/include/freetype2 freetype && ln -s /usr/lib/`uname -i`-linux-gn
 RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/var/images && curl --user admn2410:PaulB0wl3s -o 67352ccc-d1b0-11e1-89ae-279075081939.jp2 http://databank.ora.ox.ac.uk/dmt/datasets/Images/67352ccc-d1b0-11e1-89ae-279075081939.jp2)
 
 # -------------------------------------------------------------------------
-# --------------------------- RUN TEST FRAMEWORK --------------------------
+# --------------------- INSTALL & RUN TEST FRAMEWORK ----------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && py.test /home/bodl-loris-svc/sites/bodl-loris-svc/tests/)
+RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && pip install py.test && py.test /home/bodl-loris-svc/sites/bodl-loris-svc/tests/)
 
 # -------------------------------------------------------------------------
 # ---------------------------  INSTALL VALIDATOR --------------------------
