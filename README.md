@@ -1,4 +1,4 @@
-Installation
+Introduction
 ============
 
 This Loris build is intended for Ubuntu 14.0, Loris 2.0.0-beta1 and Kakadu 7.2. These versions can be changed, see ```development[_docker].cfg``` and ```Dockerfile```. 
@@ -7,6 +7,14 @@ BDLSS Docker CI
 https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
 
 Github Loris source https://github.com/pulibrary/loris
+
+**Please note:** ```setup.py```, ```transforms.py``` and ```webapp.py``` from the loris source have hard coded paths and kakadu library names. These files have been brought in as templates in the ```conf/``` directory and will be deployed with the correct paths and filenames.
+
+If you are updating the loris source from 2.0.0-beta1 (you can do this by entering a new tag name inside the ```development[_docker].cfg``` file) you *may* need to update these files with their new versions. However, the buildout parameter tags ```${...}``` will need to be replaced.
+
+
+Installation
+============
 
 Create user "bodl-loris-svc"
 ------------------
@@ -228,6 +236,8 @@ It will stop/start/restart Loris. It runs under a @reboot directive in the sudo 
 
 Continuous Integration
 ----------------------
+
+The Dockerfile will run the ```_docker.cfg``` version of development.cfg. This just ensures that users are named properly (the 'env' recipe does not work inside containers) and that the localhost is pointed to all IPs (as this cannot be dictated or predicted when creating a container).
 
 Docker
 https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/
