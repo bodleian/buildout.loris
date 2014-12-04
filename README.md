@@ -32,7 +32,7 @@ This runs all test scripts using the filename format of ``test_<something>.py`` 
 Installation
 ============
 
-To deploy Loris on a server, follow these instructions. Whenever this GIT account is updated, Docker will run a test deployment at ```https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/```. Please see **Continuous Integration** section below for more details.
+To deploy Loris on a server, follow these instructions. Whenever this GIT account is updated, Docker will run a test deployment at ```https://registry.hub.docker.com/u/calvinbutcher/buildout.loris/```. Please see **Continuous Integration** section above for more details.
 
 Create user "bodl-loris-svc"
 ------------------
