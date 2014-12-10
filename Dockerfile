@@ -25,11 +25,20 @@ RUN (adduser --disabled-password --gecos '' bodl-loris-svc && adduser bodl-loris
 COPY / /home/bodl-loris-svc/sites/bodl-loris-svc/
 
 # -------------------------------------------------------------------------
+# --------------------------- PILLOWS REQS OPENJPEG 2.0  ------------------
+# -------------------------------------------------------------------------
+
+# http://shortrecipes.blogspot.co.uk/2014/06/python-34-and-pillow-24-with-jpeg2000.html
+
+RUN (sudo apt-get install wget cmake make)
+RUN (mkdir -p /home/bodl-loris-svc/Downloads && cd /home/bodl-loris-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz)
+RUN (tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && sudo make install)
+
+# -------------------------------------------------------------------------
 # --------------------------- INSTALL REQS --------------------------------
 # -------------------------------------------------------------------------
 
 RUN apt-get -y install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_requirements)
-RUN mkdir -p /home/bodl-loris-svc/Downloads
 
 # -------------------------------------------------------------------------
 # --------------------------- GET KAKADU ----------------------------------
