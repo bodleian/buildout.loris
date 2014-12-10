@@ -132,8 +132,8 @@ For BDLSS users, you can retrieve the source from databank (you will need a user
 
 ```bash
 cd ~/Downloads
-curl --user <username>:<password> -o Kakadu_v72.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v72.zip 
-unzip -d kakadu Kakadu_v72.zip
+curl --user <username>:<password> -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip 
+unzip -d kakadu Kakadu_v74.zip
 ```
 
 Otherwise you will need to ```scp```, ```wget``` or ```curl``` your licensed Kakadu source into the ```~/Downloads``` directory as a folder called 'kakadu'.
