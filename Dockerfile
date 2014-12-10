@@ -30,7 +30,7 @@ COPY / /home/bodl-loris-svc/sites/bodl-loris-svc/
 
 # http://shortrecipes.blogspot.co.uk/2014/06/python-34-and-pillow-24-with-jpeg2000.html
 
-RUN (sudo apt-get install wget cmake make)
+RUN (sudo apt-get install -y -q wget cmake make)
 RUN (mkdir -p /home/bodl-loris-svc/Downloads && cd /home/bodl-loris-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz)
 RUN (tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && sudo make install)
 
