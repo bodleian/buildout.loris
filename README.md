@@ -71,6 +71,27 @@ mkdir -p ~/sites/bodl-loris-svc
 cd ~/sites/bodl-loris-svc
 git clone https://github.com/BDLSS/buildout.loris.git ./
 ```
+
+OpenJPEG Libraries
+------------------
+
+For PIL/Pillow to run with JPEG2000 capability we need to install the OpenJpeg libraries before python-imaging.
+
+http://shortrecipes.blogspot.co.uk/2014/06/python-34-and-pillow-24-with-jpeg2000.html
+
+```bash
+su - <sudo user>
+sudo apt-get install -y -q wget cmake make
+mkdir -p /home/bodl-loris-svc/Downloads 
+cd /home/bodl-loris-svc/Downloads 
+wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz 
+tar xzvf openjpeg-2.0.1.tar.gz 
+cd openjpeg-2.0.1/ 
+cmake . 
+make 
+sudo make install
+```
+
 Setup server
 ------------
 
