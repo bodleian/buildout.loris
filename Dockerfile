@@ -88,7 +88,7 @@ RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && cd /home
 # --------------------------- SHORTLINKS ----------------------------------
 # -------------------------------------------------------------------------
 
-RUN (ln -s /usr/include/freetype2 freetype && ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/)
+RUN (ln -s /usr/include/freetype2 freetype && ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libjpeg.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/ && ln -s /usr/lib/`uname -i`-linux-gnu/libopenjp2.so /usr/lib/)
 
 # -------------------------------------------------------------------------
 # --------------------------- GET TEST IMAGE ------------------------------
