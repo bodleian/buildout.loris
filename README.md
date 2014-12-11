@@ -107,7 +107,6 @@ Install Python
 --------------
 ```bash
 su - bodl-loris-svc
-mkdir -p ~/Downloads
 cd ~/Downloads
 wget http://www.python.org/ftp/python/2.7.6/Python-2.7.6.tgz --no-check-certificate
 tar zxfv Python-2.7.6.tgz
