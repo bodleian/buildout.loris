@@ -25,7 +25,7 @@ RUN (adduser --disabled-password --gecos '' bodl-loris-svc && adduser bodl-loris
 COPY / /home/bodl-loris-svc/sites/bodl-loris-svc/
 
 # -------------------------------------------------------------------------
-# --------------------------- PILLOWS REQS OPENJPEG 2.0  ------------------
+# ---------------------------  PILLOW REQS OPENJPEG 2.0  ------------------
 # -------------------------------------------------------------------------
 
 # http://shortrecipes.blogspot.co.uk/2014/06/python-34-and-pillow-24-with-jpeg2000.html
@@ -45,7 +45,7 @@ RUN apt-get -y install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_re
 
 # change Kakadu_v<number>.zip for different versions: 64, 72, 74, etc.
 
-RUN (cd /home/bodl-loris-svc/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip && unzip -d kakadu Kakadu_v74.zip)
+RUN (cd /home/bodl-loris-svc/Downloads && curl --user admn2410:PaulB0wl3s -o Kakadu_v72.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v72.zip && unzip -d kakadu Kakadu_v72.zip)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL PYTHON ------------------------------
