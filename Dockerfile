@@ -29,9 +29,10 @@ COPY / /home/bodl-loris-svc/sites/bodl-loris-svc/
 # -------------------------------------------------------------------------
 
 # http://shortrecipes.blogspot.co.uk/2014/06/python-34-and-pillow-24-with-jpeg2000.html
+# http://stackoverflow.com/questions/1099981/why-cant-python-find-shared-objects-that-are-in-directories-in-sys-path
 
 RUN (sudo apt-get install -y -q wget cmake make)
-RUN (mkdir -p /home/bodl-loris-svc/Downloads && cd /home/bodl-loris-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && sudo make install)
+RUN (mkdir -p /home/bodl-loris-svc/Downloads && cd /home/bodl-loris-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && sudo make install && export LD_LIBRARY_PATH=/usr/local/lib)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL REQS --------------------------------
@@ -105,7 +106,7 @@ RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && pip inst
 # ---------------------------  INSTALL VALIDATOR --------------------------
 # -------------------------------------------------------------------------
 
-RUN (mkdir -p /home/bodl-loris-svc/sites/bodl-loris-svc/parts/validator && cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif-validator/iiif-validator-0.9.1.tar.gz && tar zxfv iiif-validator-0.9.1.tar.gz)
+RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif-validator/iiif-validator-0.9.1.tar.gz && tar zxfv iiif-validator-0.9.1.tar.gz)
 RUN (apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /home/bodl-loris-svc/sites/bodl-loris-svc && . bin/activate && pip install bottle && pip install python-magic && pip install lxml && pip install Pillow)
 
 # -------------------------------------------------------------------------
