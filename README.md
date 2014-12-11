@@ -92,6 +92,7 @@ cmake .
 make 
 su - <sudo user>
 sudo make install
+export LD_LIBRARY_PATH=/usr/local/lib
 ```
 
 Setup server
@@ -219,6 +220,7 @@ sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib/
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/liblcms.so /usr/lib/
 
 sudo ln -s /usr/lib/`uname -i`-linux-gnu/libtiff.so /usr/lib/
+sudo ln -s /usr/lib/`uname -i`-linux-gnu/libopenjp2.so /usr/lib/
 ```
 
 Test images
