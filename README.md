@@ -26,6 +26,32 @@ Pytest is executed in the docker run.
 
 This runs all test scripts using the filename format of ``test_<something>.py`` in the ``tests/`` folder.
 
+IIIF Validation
+---------------
+
+You can do this via the website:
+
+http://iiif-test.stanford.edu/
+
+Or you can download the validator and run it on your server (once you have started the application), as follows:
+
+```bash
+cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts 
+wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif-validator/iiif-validator-0.9.1.tar.gz
+tar zxfv iiif-validator-0.9.1.tar.gz
+su - <sudo user>
+sudo apt-get -y install libmagic-dev libxml2-dev libxslt-dev
+su - bodl-loris-svc
+cd /home/bodl-loris-svc/sites/bodl-loris-svc 
+. bin/activate 
+pip install bottle 
+pip install python-magic 
+pip install lxml 
+pip install Pillow
+cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts/iiif-validator-0.9.1/ 
+./iiif-validate.py -s <internal IP address>:8080 -p 'loris' -i 67352ccc-d1b0-11e1-89ae-279075081939.jp2 --version=2.0 -v
+```
+
 Installation
 ============
 
