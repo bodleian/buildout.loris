@@ -29,7 +29,7 @@ This runs all test scripts using the filename format of ``test_<something>.py`` 
 IIIF Validation
 ---------------
 
-You can do this via the website:
+This is done automatically in the docker CI. However, you can do this manually via the website:
 
 http://iiif-test.stanford.edu/
 
