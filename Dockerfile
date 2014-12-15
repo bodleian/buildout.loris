@@ -107,7 +107,7 @@ RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && pip inst
 # -------------------------------------------------------------------------
 
 RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif-validator/iiif-validator-0.9.1.tar.gz && tar zxfv iiif-validator-0.9.1.tar.gz)
-RUN (apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /home/bodl-loris-svc/sites/bodl-loris-svc && . bin/activate && pip install bottle && pip install python-magic && pip install lxml && pip install Pillow)
+RUN (sudo apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /home/bodl-loris-svc/sites/bodl-loris-svc && . bin/activate && pip install bottle && pip install python-magic && pip install lxml && pip install Pillow)
 
 # -------------------------------------------------------------------------
 # -------------------  START SERVER, RUN VALIDATOR   ----------------------
