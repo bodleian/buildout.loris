@@ -25,7 +25,7 @@ RUN (adduser --disabled-password --gecos '' bodl-loris-svc && adduser bodl-loris
 COPY / /home/bodl-loris-svc/sites/bodl-loris-svc/
 
 # -------------------------------------------------------------------------
-# ---------------------------  PILLOW REQS OPENJPEG 2.0  ------------------
+# ---------------- IN UBUNTU 14 PILLOW REQS OPENJPEG 2.0  -----------------
 # -------------------------------------------------------------------------
 
 # http://shortrecipes.blogspot.co.uk/2014/06/python-34-and-pillow-24-with-jpeg2000.html
@@ -61,7 +61,7 @@ RUN make install
 # --------------------------- BUILDOUT SETUP ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bodl-loris-svc/Downloads && wget https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz && tar zxfv distribute-0.6.49.tar.gz) 
+RUN (cd /home/bodl-loris-svc/Downloads && wget --no-check-certificate https://pypi.python.org/packages/source/d/distribute/distribute-0.6.49.tar.gz && tar zxfv distribute-0.6.49.tar.gz) 
 RUN /home/bodl-loris-svc/python/2.7.6/bin/python /home/bodl-loris-svc/Downloads/distribute-0.6.49/distribute_setup.py
 RUN /home/bodl-loris-svc/python/2.7.6/bin/easy_install pip
 RUN /home/bodl-loris-svc/python/2.7.6/bin/pip install virtualenv
@@ -94,7 +94,7 @@ RUN (ln -s /usr/include/freetype2 freetype && ln -s /usr/lib/`uname -i`-linux-gn
 # --------------------------- GET TEST IMAGE ------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/var/images && curl --user admn2410:PaulB0wl3s -o 67352ccc-d1b0-11e1-89ae-279075081939.jp2 http://databank.ora.ox.ac.uk/dmt/datasets/Images/67352ccc-d1b0-11e1-89ae-279075081939.jp2)
+RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/var/images && curl --user admn2410:PaulB0wl3s -o 67352ccc-d1b0-11e1-89ae-279075081939.jp2 http://databank.ora.ox.ac.uk/dmt/datasets/Images/67352ccc-d1b0-11e1-89ae-279075081939.jp2 && chmod 777 67352ccc-d1b0-11e1-89ae-279075081939.jp2)
 
 # -------------------------------------------------------------------------
 # --------------------- INSTALL & RUN TEST FRAMEWORK ----------------------
