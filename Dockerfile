@@ -10,7 +10,7 @@ FROM ubuntu:12.04
 # --------------------------- UPDATE OS -----------------------------------
 # -------------------------------------------------------------------------
 
-RUN (sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove)
+RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
 
 # -------------------------------------------------------------------------
 # ------------------------- CREATE APP USER/DIR ---------------------------
@@ -32,7 +32,7 @@ COPY / /home/bodl-loris-svc/sites/bodl-loris-svc/
 # http://stackoverflow.com/questions/1099981/why-cant-python-find-shared-objects-that-are-in-directories-in-sys-path
 
 RUN (sudo apt-get install -y -q wget cmake make)
-RUN (mkdir -p /home/bodl-loris-svc/Downloads && cd /home/bodl-loris-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && sudo make install && export LD_LIBRARY_PATH=/usr/local/lib)
+RUN (mkdir -p /home/bodl-loris-svc/Downloads && cd /home/bodl-loris-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && make install && export LD_LIBRARY_PATH=/usr/local/lib)
 
 # -------------------------------------------------------------------------
 # --------------------------- INSTALL REQS --------------------------------
