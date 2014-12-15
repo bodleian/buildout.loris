@@ -103,7 +103,7 @@ RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/var/images && curl --user admn
 RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && pip install pytest && py.test /home/bodl-loris-svc/sites/bodl-loris-svc/tests/)
 
 # -------------------------------------------------------------------------
-# ---------------------------  INSTALL VALIDATOR --------------------------
+# --------------------------- INSTALL VALIDATOR ---------------------------
 # -------------------------------------------------------------------------
 
 RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts && wget --no-check-certificate https://pypi.python.org/packages/source/i/iiif-validator/iiif-validator-0.9.1.tar.gz && tar zxfv iiif-validator-0.9.1.tar.gz)
