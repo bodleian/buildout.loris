@@ -54,7 +54,7 @@ except ImportError:
 
 # Loris's etc dir MUST either be a sibling to the loris/loris directory or at 
 # the below:
-ETC_DP = '${buildout:directory}/parts/loris/etc'
+ETC_DP = '${buildout:directory}/src/loris/etc'
 # We can figure out everything else from there.
 
 getcontext().prec = 25 # Decimal precision. This should be plenty.
