@@ -82,7 +82,7 @@ RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc && /home/bodl-loris-svc/python
 # --------------------------- INSTALL LORIS -------------------------------
 # -------------------------------------------------------------------------
 
-RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts/loris && python setup.py install)
+RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && cd /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris && python setup.py install)
 
 # -------------------------------------------------------------------------
 # --------------------------- SHORTLINKS ----------------------------------
