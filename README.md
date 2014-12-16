@@ -10,14 +10,21 @@ If you are updating the loris source from 2.0.0-beta1 (you can do this by enteri
 General
 -------
 
-*Core application source* is held in ```/src```
-*Eggs* are held in ```/home/bodl-loris-svc/.buildout/eggs```
-*Loris conf* is held in ```/src/loris/etc/```
-*Loris WSGI* is held in ```/src/loris/www```
-*Virtualenv Python* is held in ```/home/bodl-loris-svc/python```
-*Caches and logs and images* are held in ```/var``` (never cleared in event of buildout re-run)
-*Components of application stack* (such as webserver) are held in ```/parts```
-*Apache start script* is held in ```/bin```
+**Core application source** is held in ```/src```
+
+**Eggs** are held in ```/home/bodl-loris-svc/.buildout/eggs```
+
+**Loris conf** is held in ```/src/loris/etc/```
+
+**Loris WSGI** is held in ```/src/loris/www```
+
+**Virtualenv Python** is held in ```/home/bodl-loris-svc/python```
+
+**Caches and logs and images** are held in ```/var``` (never cleared in event of buildout re-run)
+
+**Components of application stack** (such as webserver) are held in ```/parts```
+
+**Apache start script** is held in ```/bin```
 
 Continuous Integration
 ----------------------
