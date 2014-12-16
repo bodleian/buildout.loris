@@ -7,6 +7,18 @@ This Loris build is intended for Ubuntu 14.0, Loris 2.0.0-beta1 (https://github.
 
 If you are updating the loris source from 2.0.0-beta1 (you can do this by entering a new tag name inside the ```development[_docker].cfg``` file) you *may* need to update these files with their new versions. However, the buildout parameter tags ```${...}``` will need to be replaced.
 
+General
+-------
+
+*Core application source* is held in ```/src```
+*Eggs* are held in ```/home/bodl-loris-svc/.buildout/eggs```
+*Loris conf* is held in ```/src/loris/etc/```
+*Loris WSGI* is held in ```/src/loris/www```
+*Virtualenv Python* is held in ```/home/bodl-loris-svc/python```
+*Caches and logs and images* are held in ```/var``` (never cleared in event of buildout re-run)
+*Components of application stack* (such as webserver) are held in ```/parts```
+*Apache start script* is held in ```/bin```
+
 Continuous Integration
 ----------------------
 
