@@ -300,7 +300,7 @@ http://{your_server, e.g. localhost:8080}/loris/67352ccc-d1b0-11e1-89ae-27907508
 http://{your_server, e.g. localhost:8080}/loris/67352ccc-d1b0-11e1-89ae-279075081939.jp2/info.json
 ```
 
-To run a IIIF validation test see the **IIIF Validation*** section above.
+To run a IIIF validation test see the **IIIF Validation** section above.
 
 Setup the reboot script in the sudo crontab
 -------------------------------------------
