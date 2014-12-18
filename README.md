@@ -136,6 +136,7 @@ cd openjpeg-2.0.1/
 cmake . 
 make 
 su - <sudo user>
+cd /home/bodl-loris-svc/Downloads/openjpeg-2.0.1
 sudo make install
 export LD_LIBRARY_PATH=/usr/local/lib
 ```
@@ -187,7 +188,13 @@ Change the IP address for apache config
 edit development or production.cfg:
 
 ```bash
+cd ~/sites/bodl-loris-svc
+vi development.cfg
+```
 
+Edit the following section:
+
+```bash
 [hosts]
 internalIP = <your server internal IP address>
 externalIP = <your server external IP address>
