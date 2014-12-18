@@ -282,7 +282,7 @@ Copy the test images into your image root:
 
 ```bash 
 su - bodl-loris-svc
-cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/parts/loris/tests/img/* /home/bodl-loris-svc/sites/bodl-loris-svc/var/images
+cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl-loris-svc/sites/bodl-loris-svc/var/images
 ```
 
 Start Apache
