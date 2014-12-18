@@ -1,0 +1,3 @@
+18.12.14 - CTB
+
+IIIF validation does not work in docker CI resulting in an error result (non-zero exit code)
