@@ -199,6 +199,22 @@ Edit the following section:
 internalIP = <your server internal IP address>
 externalIP = <your server external IP address>
 ```
+Mirador Viewer
+--------------
+
+To install Mirador viewer alter the end section of ```development.cfg```. Uncomment the viewer you want.
+
+```bash
+[sources]
+# Mooviewer
+www = git https://github.com/ruven/iipmooviewer egg=false
+
+# Mirador
+#www = git https://github.com/IIIF/mirador.git egg=false
+```
+
+After running the buildout you will need to install a couple of other things and then install the Mirador source (see section 'Installing Mirador' below).
+
 
 Upload Kakadu source to server for compilation
 ----------------------------------------------
@@ -284,6 +300,18 @@ Copy the test images into your image root:
 su - bodl-loris-svc
 cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl-loris-svc/sites/bodl-loris-svc/var/images
 ```
+
+Installing Mirador
+------------------
+
+```bash
+sudo apt-get install nodejs npm
+sudo npm install -g grunt-cli
+cd /home/bodl-iip-svc/sites/bodl-iip-svc/src/www
+sudo npm install
+```
+
+Browse as below to load the viewer.
 
 Start Apache
 ------------
