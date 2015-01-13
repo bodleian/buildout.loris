@@ -305,7 +305,7 @@ Installing Mirador
 ------------------
 
 ```bash
-sudo apt-get install nodejs npm
+sudo apt-get install nodejs nodejs-legacy npm
 sudo npm install -g grunt-cli
 cd /home/bodl-loris-svc/sites/bodl-loris-svc/src/www
 sudo npm install
