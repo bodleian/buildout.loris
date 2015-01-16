@@ -319,6 +319,8 @@ cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl
 Installing Mirador
 ------------------
 
+For Ubuntu 12.0 remove ```nodejs-legacy```` from the first line.
+
 ```bash
 sudo apt-get install nodejs nodejs-legacy npm
 sudo npm install -g grunt-cli
