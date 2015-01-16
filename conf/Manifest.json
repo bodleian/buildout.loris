@@ -31,13 +31,13 @@
                             "@type": "oa:Annotation", 
                             "motivation": "sc:painting", 
                             "resource": {
-                                "@id": "http://localhost:8080/loris/47102787.jp2/full/full/0/default.jpg", 
+                                "@id": "http://localhost:8080/loris/0001.jpg/full/full/0/default.jpg", 
                                 "@type": "dctypes:Image", 
                                 "format": "image/jpeg", 
                                 "height": 696, 
                                 "width": 696, 
                                 "service": {
-                                    "@id": "http://localhost:8080/loris/47102787.jp2",
+                                    "@id": "http://localhost:8080/loris/0001.jpg",
                                     "profile": "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2" 
                                 }
                             }, 
@@ -57,17 +57,43 @@
                             "@type": "oa:Annotation", 
                             "motivation": "sc:painting", 
                             "resource": {
-                                "@id": "http://localhost:8080/loris/sul_precincts.jp2/full/full/0/default.jpg", 
+                                "@id": "http://localhost:8080/loris/0001.jp2/full/full/0/default.jpg", 
                                 "@type": "dctypes:Image", 
                                 "format": "image/jpeg", 
                                 "height": 4488, 
                                 "width": 5944, 
                                 "service": {
-                                    "@id": "http://localhost:8080/loris/sul_precincts.jp2", 
+                                    "@id": "http://localhost:8080/loris/0001.jp2", 
                                     "profile": "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2"
                                 }
                             }, 
                             "on": "http://dms-data.stanford.edu/Walters/bd183mz0176/canvas/canvas-2"
+                        }
+                    ]
+                },
+                {
+                    "@id": "http://dms-data.stanford.edu/Walters/bd183mz0176/canvas/canvas-3",
+                    "@type": "sc:Canvas",
+                    "label": "fol. W.688a",
+                    "height": 696,
+                    "width": 696,
+                    "images": [
+                        {
+                            "@id": "http://dms-data.stanford.edu/Walters/bd183mz0176/imageanno/anno-3",
+                            "@type": "oa:Annotation",
+                            "motivation": "sc:painting",
+                            "resource": {
+                                "@id": "http://localhost:8080/loris/0001.tif/full/full/0/default.jpg",
+                                "@type": "dctypes:Image",
+                                "format": "image/jpeg",
+                                "height": 696,
+                                "width": 696,
+                                "service": {
+                                    "@id": "http://localhost:8080/loris/0001.tif",
+                                    "profile": "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2"
+                                }
+                            },
+                            "on": "http://dms-data.stanford.edu/Walters/bd183mz0176/canvas/canvas-3"
                         }
                     ]
                 }
