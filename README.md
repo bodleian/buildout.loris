@@ -333,6 +333,11 @@ For Ubuntu 14.0:
 
 ```bash
 sudo apt-get install nodejs nodejs-legacy npm
+```
+
+Install grunt and install mirador with npm:
+
+```bash
 sudo npm install -g grunt-cli
 cd /home/bodl-loris-svc/sites/bodl-loris-svc/src/www
 sudo npm install
