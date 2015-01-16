@@ -37,7 +37,7 @@
                                 "height": 696, 
                                 "width": 696, 
                                 "service": {
-                                    "@id": "http://10.0.2.52:8080/loris/47102787.jp2",
+                                    "@id": "http://localhost:8080/loris/47102787.jp2",
                                     "profile": "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2" 
                                 }
                             }, 
@@ -57,7 +57,7 @@
                             "@type": "oa:Annotation", 
                             "motivation": "sc:painting", 
                             "resource": {
-                                "@id": "http://10.0.2.52:8080/loris/sul_precincts.jp2/full/full/0/default.jpg", 
+                                "@id": "http://localhost:8080/loris/sul_precincts.jp2/full/full/0/default.jpg", 
                                 "@type": "dctypes:Image", 
                                 "format": "image/jpeg", 
                                 "height": 4488, 

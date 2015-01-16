@@ -117,8 +117,8 @@ cd ~/sites/bodl-loris-svc
 git clone https://github.com/BDLSS/buildout.loris.git ./
 ```
 
-OpenJPEG Libraries
-------------------
+OpenJPEG Libraries (Ubuntu 14.0 only)
+-------------------------------------
 
 For PIL/Pillow to run with JPEG2000 capability we need to install the OpenJpeg libraries before python-imaging.
 
