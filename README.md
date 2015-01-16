@@ -255,6 +255,14 @@ buildout -c development.cfg
 Install Loris
 -------------
 
+If you are running version ```2.0.0-beta1```, please rename the loris.conf file as follows:
+
+```bash
+mv /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/etc/loris.conf /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/etc/loris2.conf
+```
+
+Then run setup.
+
 ```bash
 
 cd /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris
