@@ -350,7 +350,6 @@ Start Apache
 
 ```bash
 su - <sudo user>
-sudo chmod +x /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl
 sudo /home/bodl-loris-svc/sites/bodl-loris-svc/bin/lorisctl start
 ```
 
