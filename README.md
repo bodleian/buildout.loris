@@ -319,7 +319,17 @@ cp -R /home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/tests/img/* /home/bodl
 Installing Mirador
 ------------------
 
-For Ubuntu 12.0 remove ```nodejs-legacy```` from the first line.
+For Ubuntu 12.0:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y python-software-properties
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs
+```
+
+For Ubuntu 14.0:
 
 ```bash
 sudo apt-get install nodejs nodejs-legacy npm
