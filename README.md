@@ -153,7 +153,7 @@ su - bodl-loris-svc
 Install Python
 --------------
 
-If you haven't already (installed the OpenJPEG libraries for Ubuntu 14.0) create the downloads directory:
+If you haven't already (by installing the OpenJPEG libraries for Ubuntu 14.0) create the downloads directory:
 
 ```bash
 mkdir -p /home/bodl-loris-svc/Downloads
