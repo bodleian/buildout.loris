@@ -209,7 +209,7 @@ externalIP = <your server external IP address>
 Mirador Viewer
 --------------
 
-To install Mirador viewer alter the end section of ```development.cfg```. Uncomment the viewer you want.
+To install Mirador viewer alter the end section of ```base.cfg```. Uncomment the viewer you want.
 
 ```bash
 [sources]
