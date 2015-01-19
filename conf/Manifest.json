@@ -31,13 +31,13 @@
                             "@type": "oa:Annotation", 
                             "motivation": "sc:painting", 
                             "resource": {
-                                "@id": "http://localhost:8080/loris/0001.jpg/full/full/0/default.jpg", 
+                                "@id": "http://iiif-dev.bodleian.ox.ac.uk:8080/loris/0001.jpg/full/full/0/default.jpg", 
                                 "@type": "dctypes:Image", 
                                 "format": "image/jpeg", 
                                 "height": 696, 
                                 "width": 696, 
                                 "service": {
-                                    "@id": "http://localhost:8080/loris/0001.jpg",
+                                    "@id": "http://iiif-dev.bodleian.ox.ac.uk:8080/loris/0001.jpg",
                                     "profile": "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2" 
                                 }
                             }, 
@@ -57,13 +57,13 @@
                             "@type": "oa:Annotation", 
                             "motivation": "sc:painting", 
                             "resource": {
-                                "@id": "http://localhost:8080/loris/0001.jp2/full/full/0/default.jpg", 
+                                "@id": "http://iiif-dev.bodleian.ox.ac.uk:8080/loris/0001.jp2/full/full/0/default.jpg", 
                                 "@type": "dctypes:Image", 
                                 "format": "image/jpeg", 
                                 "height": 4488, 
                                 "width": 5944, 
                                 "service": {
-                                    "@id": "http://localhost:8080/loris/0001.jp2", 
+                                    "@id": "http://iiif-dev.bodleian.ox.ac.uk:8080/loris/0001.jp2", 
                                     "profile": "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2"
                                 }
                             }, 
@@ -83,13 +83,13 @@
                             "@type": "oa:Annotation",
                             "motivation": "sc:painting",
                             "resource": {
-                                "@id": "http://localhost:8080/loris/0001.tif/full/full/0/default.jpg",
+                                "@id": "http://iiif-dev.bodleian.ox.ac.uk:8080/loris/0001.tif/full/full/0/default.jpg",
                                 "@type": "dctypes:Image",
                                 "format": "image/jpeg",
                                 "height": 696,
                                 "width": 696,
                                 "service": {
-                                    "@id": "http://localhost:8080/loris/0001.tif",
+                                    "@id": "http://iiif-dev.bodleian.ox.ac.uk:8080/loris/0001.tif",
                                     "profile": "http://library.stanford.edu/iiif/image-api/1.1/conformance.html#level2"
                                 }
                             },
