@@ -26,6 +26,10 @@ General
 
 **Apache start script** is held in ```/home/bodl-loris-svc/sites/bodl-loris-svc/bin```
 
+**kdu_compress** is compiled and moved to ```/home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/bin``` as given in ```/home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/etc/loris.conf```
+
+**kdulib_vXX.so** is compiled and moved to ```/home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/lib``` as given in ```/home/bodl-loris-svc/sites/bodl-loris-svc/src/loris/etc/loris.conf```
+
 Continuous Integration
 ----------------------
 
@@ -77,7 +81,7 @@ Installation
 To deploy Loris on a server, follow these instructions. Whenever this GIT account is updated, Docker will run a test deployment at ```https://registry.hub.docker.com/u/bdlss/buildout.loris/```. Please see **Continuous Integration** section above for more details.
 
 Create user "bodl-loris-svc"
-------------------
+----------------------------
 
 ```bash
 sudo useradd bodl-loris-svc
