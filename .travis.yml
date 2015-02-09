@@ -6,7 +6,7 @@ install:
 - cd ~/sites/bodl-dmt-svc
 - git clone https://github.com/bodleian/dmt.manifestcompiler.git ./
 #- sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove
-- sudo adduser --disabled-password --gecos '' bodl-dmt-svc && sudo adduser bodl-dmt-svc sudo && echo '%sudo ALL=ALL NOPASSWD:ALL' >> /etc/sudoers && su - bodl-dmt-svc && mkdir -p sites/bodl-loris-svc
+- sudo adduser --disabled-password --gecos '' bodl-dmt-svc && sudo adduser bodl-dmt-svc sudo && sudo echo '%sudo ALL=ALL NOPASSWD:ALL' >> /etc/sudoers && su - bodl-dmt-svc && mkdir -p sites/bodl-loris-svc
 #COPY / ~/sites/bodl-dmt-svc/
 
 # -------------------------------------------------------------------------
@@ -17,7 +17,7 @@ install:
 # http://stackoverflow.com/questions/1099981/why-cant-python-find-shared-objects-that-are-in-directories-in-sys-path
 
 #- sudo apt-get install -y -q wget cmake make
-#- mkdir -p ~/sites/bodl-dmt-svc/Downloads && cd ~/sites/bodl-dmt-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && sudo make install && export LD_LIBRARY_PATH=/usr/local/lib
+f#- mkdir -p ~/sites/bodl-dmt-svc/Downloads && cd ~/sites/bodl-dmt-svc/Downloads && wget http://downloads.sourceforge.net/project/openjpeg.mirror/2.0.1/openjpeg-2.0.1.tar.gz && tar xzvf openjpeg-2.0.1.tar.gz && cd openjpeg-2.0.1/ && cmake . && make && sudo make install && export LD_LIBRARY_PATH=/usr/local/lib
 
 # -------------------------------------------------------------------------
 
