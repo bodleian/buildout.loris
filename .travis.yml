@@ -5,7 +5,7 @@ install:
 - mkdir -p ~/sites/bodl-dmt-svc
 - cd ~/sites/bodl-dmt-svc
 - git clone https://github.com/bodleian/dmt.manifestcompiler.git ./
-- sudo adduser --disabled-password --gecos '' bodl-dmt-svc && sudo adduser bodl-dmt-svc sudo && su - bodl-dmt-svc && mkdir -p sites/bodl-loris-svc
+- sudo adduser --disabled-password --gecos '' bodl-dmt-svc && su - bodl-dmt-svc && mkdir -p sites/bodl-loris-svc
 #sudo echo '%sudo ALL=ALL NOPASSWD:ALL' >> /etc/sudoers 
 #COPY / ~/sites/bodl-dmt-svc/ 
 
