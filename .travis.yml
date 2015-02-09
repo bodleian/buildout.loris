@@ -7,7 +7,7 @@ install:
 - git clone https://github.com/bodleian/dmt.manifestcompiler.git ./
 #- sudo apt-get update && sudo apt-get upgrade -y -q && sudo apt-get dist-upgrade -y -q && sudo apt-get -y -q autoclean && sudo apt-get -y -q autoremove
 - sudo adduser --disabled-password --gecos '' bodl-dmt-svc && sudo adduser bodl-dmt-svc sudo && sudo echo '%sudo ALL=ALL NOPASSWD:ALL' >> /etc/sudoers && su - bodl-dmt-svc && mkdir -p sites/bodl-loris-svc
-#COPY / ~/sites/bodl-dmt-svc/
+#COPY / ~/sites/bodl-dmt-svc/ 
 
 # -------------------------------------------------------------------------
 # ---------------- IN UBUNTU 14 PILLOW REQS OPENJPEG 2.0  -----------------
