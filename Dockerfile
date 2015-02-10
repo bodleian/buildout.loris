@@ -45,7 +45,6 @@ RUN apt-get -y install $(cat /home/bodl-loris-svc/sites/bodl-loris-svc/ubuntu_re
 # -------------------------------------------------------------------------
 
 # change Kakadu_v<number>.zip for different versions: 64, 72, 74, etc.
-
 #RUN (cd /home/bodl-loris-svc/Downloads && curl --user <USER>:<PSSWD> -o Kakadu_v74.zip https://databank.ora.ox.ac.uk/dmt/datasets/Kakadu/Kakadu_v74.zip && unzip -d kakadu Kakadu_v74.zip)
 
 # -------------------------------------------------------------------------
