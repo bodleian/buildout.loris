@@ -33,6 +33,8 @@ General
 Continuous Integration
 ----------------------
 
+**NB:** The CI does not download, compile and install kakadu. This causes some of the validation tests to fail.
+
 The Dockerfile will run the ```_docker.cfg``` version of development.cfg. This just ensures that users are named properly (the 'env' recipe does not work inside containers) and that the localhost is pointed to all IPs (as this cannot be dictated or predicted when creating a container).
 
 Docker
