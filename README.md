@@ -87,7 +87,7 @@ First things first
 
 If intending the docker CI server to download and compile kakadu, edit Dockerfile curl commands to contain databank username and password when downloading kakadu library. However, currently this will not work.
 
-For a full working instance of Loris on your server, following the buildout instructions below (which includes download and compiling of Kakadu).
+For a full working instance of Loris on your server, follow the buildout instructions below (which includes download and compiling of Kakadu).
 
 Create user "bodl-loris-svc"
 ----------------------------
