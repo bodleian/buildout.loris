@@ -56,7 +56,7 @@ IIIF Validation
 
 This is done automatically in the docker CI. However, you can do this manually via the website:
 
-http://iiif-test.stanford.edu/
+http://iiif-test.stanford.edu/ 
 
 Or you can download the validator and run it on your server (once you have started the application), as follows:
 
