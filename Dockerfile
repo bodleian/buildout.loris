@@ -119,4 +119,6 @@ RUN (sudo apt-get -y install libmagic-dev libxml2-dev libxslt-dev && cd /home/bo
 RUN chown -R bodl-loris-svc:bodl-loris-svc /home/bodl-loris-svc
 WORKDIR /home/bodl-loris-svc/sites/bodl-loris-svc
 EXPOSE 8080
-RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/bin/ && chmod +x lorisctl && sleep 2 && ./lorisctl start && cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts/iiif-validator-0.9.1/ && ./iiif-validate.py -s 127.0.0.1:8080 -p 'loris' -i 67352ccc-d1b0-11e1-89ae-279075081939.jp2 --version=2.0 -v)
+RUN (cd /home/bodl-loris-svc/sites/bodl-loris-svc/bin/ && chmod +x lorisctl && sleep 2 && ./lorisctl start)
+
+# && cd /home/bodl-loris-svc/sites/bodl-loris-svc/ && . bin/activate && cd /home/bodl-loris-svc/sites/bodl-loris-svc/parts/iiif-validator-0.9.1/ && ./iiif-validate.py -s 127.0.0.1:8080 -p 'loris' -i 67352ccc-d1b0-11e1-89ae-279075081939.jp2 --version=2.0 -v)
